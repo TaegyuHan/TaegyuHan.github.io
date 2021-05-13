@@ -1,11 +1,15 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
+
+  - title: "Post"
+    url: "https://taegyuhan.github.io/"
+
+  - title: "Categories"
+    url: /categories/
+
+  - title: "Tags"
+    url: /tags/
+
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
