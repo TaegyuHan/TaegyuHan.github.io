@@ -170,7 +170,19 @@
       </section>
     {% when "utterances" %}
       <h4 class="page__comments-title">{{ comments_label }}</h4>
-      <section id="utterances-comments"></section>
+      <section id="utterances-comments">
+
+      <!-- utteranc comment -->
+      <script src="https://utteranc.es/client.js"
+              repo="TaegyuHan/Blog_comments"
+              issue-term="pathname"
+              label="Comment"
+              theme="github-dark"
+              crossorigin="anonymous"
+              async>
+      </script>
+      
+      </section>
     {% when "giscus" %}
       <h4 class="page__comments-title">{{ comments_label }}</h4>
       <section id="giscus-comments"></section>
