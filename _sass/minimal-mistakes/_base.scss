@@ -171,6 +171,9 @@ td > code {
   background: $code-background-color;
   border-radius: $border-radius;
 
+  // 코드글 색 수정
+  color: #EB5757;
+
   &:before,
   &:after {
     letter-spacing: -0.2em;
