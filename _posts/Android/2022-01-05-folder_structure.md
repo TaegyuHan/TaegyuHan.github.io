@@ -17,7 +17,10 @@ toc_label: "Table of contents"
 
 프로젝트가 생성되고 만들어진 (파일, 폴더)는 다음과 같습니다.
 
-<center><img src="https://drive.google.com/uc?id=1hWWDxbeNImqGl1HxkgztznT2LLusTtwt"></center>
+<a href="https://drive.google.com/uc?id=1hWWDxbeNImqGl1HxkgztznT2LLusTtwt" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1hWWDxbeNImqGl1HxkgztznT2LLusTtwt"></center>
+    <center>[그림] 프로젝트 생성 폴더 구조</center>
+</a>
 
 - 사용 IDE : Android Studio
 
@@ -51,7 +54,10 @@ toc_label: "Table of contents"
 
 # 1. manifests
 
-<center><img src="https://drive.google.com/uc?id=1yr0-mOG5kc6sSd93VQJWyloRDzRkOSt1"></center>
+<a href="https://drive.google.com/uc?id=1yr0-mOG5kc6sSd93VQJWyloRDzRkOSt1" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1yr0-mOG5kc6sSd93VQJWyloRDzRkOSt1"></center>
+    <center>[그림] manifests 폴더 구조</center>
+</a>
 
 `manifests` 폴더에는 `AndroidManifest.xml` 파일이 존재한다.
 
@@ -108,7 +114,10 @@ AndroidManifest.xml
 
 # 2. java
 
-<center><img src="https://drive.google.com/uc?id=1z9_PHpJ_l5dS-SMBOdn2v9Moil_E80WY"></center>
+<a href="https://drive.google.com/uc?id=1z9_PHpJ_l5dS-SMBOdn2v9Moil_E80WY" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1z9_PHpJ_l5dS-SMBOdn2v9Moil_E80WY"></center>
+    <center>[그림] java 폴더 구조</center>
+</a>
 
 `java` 폴더에는 3개의 패키지가 존재하고 그 안에 각각 1개의 파일이 존재 합니다. 안에 있는 파일의 용도는 다음과 같습니다.
 
@@ -200,7 +209,10 @@ public class ExampleUnitTest {
 
 # 3. res
 
-<center><img src="https://drive.google.com/uc?id=1alXjsnfymzWhGFWbz0N9elwhlIyeIQCC"></center>
+<a href="https://drive.google.com/uc?id=1alXjsnfymzWhGFWbz0N9elwhlIyeIQCC" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1alXjsnfymzWhGFWbz0N9elwhlIyeIQCC"></center>
+    <center>[그림] res 폴더 구조</center>
+</a>
 
 각종 리소스( 자원 ) 앱에 사용되는 이미지, 자료 등을 저장하는 폴더 입니다.
 
@@ -210,13 +222,20 @@ public class ExampleUnitTest {
 
 이미지의 확장자는 XML 형식으로 되어 있습니다.
 
-<center><img src="https://drive.google.com/uc?id=1f2KPX9OARYWEV-PzfosmfkKZARBdQiCB"></center>
+<a href="https://drive.google.com/uc?id=1f2KPX9OARYWEV-PzfosmfkKZARBdQiCB" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1f2KPX9OARYWEV-PzfosmfkKZARBdQiCB"></center>
+    <center>[그림] drawable폴더의 ic_launcher_foreground.xml 파일</center>
+</a>
 
 ## 3.2 res.layout
 
 `layout` 화면의 레이아웃을 설정합니다. 앱이 사용자에게 보여지는 파일을 저장하는 폴더 입니다.
 
-<center><img src="https://drive.google.com/uc?id=1rWYIdKS5N9ysH5PnotvlDvsqDca1uQoS"></center>
+<a href="https://drive.google.com/uc?id=1rWYIdKS5N9ysH5PnotvlDvsqDca1uQoS" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1rWYIdKS5N9ysH5PnotvlDvsqDca1uQoS"></center>
+    <center>[그림] layout폴더의 activity_main.xml 파일</center>
+</a>
+
 
 ## 3.3 res.mipmap
 
@@ -228,7 +247,10 @@ public class ExampleUnitTest {
 
 res.mipmap.lc_launcher, res.mipmap.lc_launcher_round
 
-<center><img src="https://drive.google.com/uc?id=1su5ViMMf-IYdXU5tbMr4bVeMEAq-81WJ"></center>
+<a href="https://drive.google.com/uc?id=1su5ViMMf-IYdXU5tbMr4bVeMEAq-81WJ" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1su5ViMMf-IYdXU5tbMr4bVeMEAq-81WJ"></center>
+    <center>[그림] mipmap.ic_launcher폴더의 ic_launcher.xml 파일</center>
+</a>
 
 ---
 

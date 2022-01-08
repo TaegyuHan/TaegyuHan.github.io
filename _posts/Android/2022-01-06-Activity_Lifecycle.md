@@ -13,9 +13,10 @@ toc_label: "Table of contents"
 
 안드로이드는 **Activity Lifecycle** 로 작동하게 되는데 정리를 해보기로 했습니다.
 
-<center><img src="https://drive.google.com/uc?id=17FDM7yWnH9KpsvQ88J5ZLQ78Vjj2E47h"></center>
-
-[ **그림 1** ] 활동 수명 주기를 간략하게 표현한 그림
+<a href="https://drive.google.com/uc?id=17FDM7yWnH9KpsvQ88J5ZLQ78Vjj2E47h" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=17FDM7yWnH9KpsvQ88J5ZLQ78Vjj2E47h"></center>
+    <center>[그림] 활동 수명 주기를 간략하게 표현한 그림</center>
+</a>
 
 위의 그림은 안드로이드 개발자 문서에서 가져온 것입니다. 위으 그림을 기반으로 정리를 시작하겠습니다.
 
@@ -163,7 +164,10 @@ protected void onDestroy() {
 
 앱을 실행시켜보면 다음과 같이 동작하는 것을 알 수 있습니다..
 
-<center><img src="https://drive.google.com/uc?id=1IfVFInRSnlE8sQcbQxbAHRcAqvqWl6L4"></center>
+<a href="https://drive.google.com/uc?id=1IfVFInRSnlE8sQcbQxbAHRcAqvqWl6L4" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1IfVFInRSnlE8sQcbQxbAHRcAqvqWl6L4"></center>
+    <center>[그림] 앱 실행</center>
+</a>
 
 ```prolog
 2022-01-06 21:20:47.615 8146-8146/com.example.android_practice D/MainActivity: onCreate
@@ -177,7 +181,10 @@ protected void onDestroy() {
 
 # 2. 다른 액티비티로 이동할 경우
 
-<center><img src="https://drive.google.com/uc?id=1UV8Saeo9VPezt7mUntyS5jlJauGexvzV"></center>
+<a href="https://drive.google.com/uc?id=1UV8Saeo9VPezt7mUntyS5jlJauGexvzV" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1UV8Saeo9VPezt7mUntyS5jlJauGexvzV"></center>
+    <center>[그림] 액티비티 이동가능한 앱 실행</center>
+</a>
 
 ```prolog
 2022-01-06 21:56:38.359 9502-9502/com.example.android_practice D/MainActivity: onCreate
@@ -191,7 +198,10 @@ protected void onDestroy() {
 
 Move 버튼 클릭
 
-<center><img src="https://drive.google.com/uc?id=1HVmdbsqojeoLOsmVpnuxkypCrH2b0M_l"></center>
+<a href="https://drive.google.com/uc?id=1HVmdbsqojeoLOsmVpnuxkypCrH2b0M_l" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=1HVmdbsqojeoLOsmVpnuxkypCrH2b0M_l"></center>
+    <center>[그림] 액티비티 이동</center>
+</a>
 
 ```prolog
 2022-01-06 21:56:38.359 9502-9502/com.example.android_practice D/MainActivity: onCreate
@@ -212,7 +222,10 @@ Move 버튼 클릭
 
 뒤로 가기 버튼 클릭
 
-<center><img src="https://drive.google.com/uc?id=17qxCpfY4GPh1A4EJepD9CS_kwOourgBx"></center>
+<a href="https://drive.google.com/uc?id=17qxCpfY4GPh1A4EJepD9CS_kwOourgBx" target="_blank">
+    <center><img src="https://drive.google.com/uc?id=17qxCpfY4GPh1A4EJepD9CS_kwOourgBx"></center>
+    <center>[그림] 액티비티 돌아가기</center>
+</a>
 
 ```prolog
 2022-01-06 21:56:38.359 9502-9502/com.example.android_practice D/MainActivity: onCreate

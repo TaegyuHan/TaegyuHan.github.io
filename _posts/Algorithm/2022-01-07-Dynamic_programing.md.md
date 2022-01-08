@@ -31,10 +31,12 @@ toc_label: "Table of contents"
 # 피보나치 수로 이해하기 ( 재귀 )
 
 피보나치 수열은 첫째 및 둘째 항의 값을 더해서 세번째인 다음항을 구하고 계속 앞으로 나아가는 수열입니다.
+<a href="https://drive.google.com/uc?id=1G64cI8V0bLVzIx43P-H5IBTtATkV3EHq" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1G64cI8V0bLVzIx43P-H5IBTtATkV3EHq"></center>
+    <center>[그림] : 피보나치수열 설명</center>
+</a>
 
-<center><img src="https://drive.google.com/uc?id=1G64cI8V0bLVzIx43P-H5IBTtATkV3EHq"></center>
 
-[그림] : 피보나치수열 설명
 
 여기서 5번째 오는 수를 code로 구해보면 재귀함수를 통해서 다음과 같음 수를 정의할 수 있습니다.
 
@@ -75,9 +77,11 @@ else:
 
 이 뜻은 즉 1 또는 0을 만나지 않는 이상 계속 함수를 호출하는다는 뜻과 같습니다. 이렇게 `ex.f(5)` 를 호출 했을 때 동작은 아래와 같이 작동합니다.
 
-<center><img src="https://drive.google.com/uc?id=1fjrSN8ZjiBgdEAb33_XDY5T5N7g0reZK"></center>
+<a href="https://drive.google.com/uc?id=1fjrSN8ZjiBgdEAb33_XDY5T5N7g0reZK" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1fjrSN8ZjiBgdEAb33_XDY5T5N7g0reZK"></center>
+    <center>[그림] : 함수 실행 과정</center>
+</a>
 
-[그림] : 함수 실행 과정
 
 - 초록색 : 처음 호출
 - 파란색 : `f(n - 1)` 호출
@@ -87,10 +91,11 @@ else:
 함수는 즉 15번 실행되게 됩니다.
 
 위의 코드를 Pycharm IDE에서 실행 시켜본 결과입니다.
+<a href="https://drive.google.com/uc?id=1dj3qQyBxUZaqBIwRc9c9p5A6I0pBKJuo" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1dj3qQyBxUZaqBIwRc9c9p5A6I0pBKJuo"></center>
+    <center>[그림] : 코드 실행 사진</center>
+</a>
 
-<center><img src="https://drive.google.com/uc?id=1dj3qQyBxUZaqBIwRc9c9p5A6I0pBKJuo"></center>
-
-[그림] : 코드 실행 사진
 
 실행결과에서 나온 값은 다음과 같습니다.
 
@@ -98,24 +103,31 @@ else:
 - `ex.fun_call_count` 피보나치 함수 실행 횟수 : 15
 
 피보나치 함수 실행 횟수는 위에서 알 수 있었지만 8의 값이 나오는 이유를 알아보면 다음과 같습니다.
+<a href="https://drive.google.com/uc?id=1DZr5oQuXS6YE280VSqVuqe75KyaI1-Lq" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1DZr5oQuXS6YE280VSqVuqe75KyaI1-Lq"></center>
+    <center>[그림] : 값이 8이나오는 이유</center>
+</a>
 
-<center><img src="https://drive.google.com/uc?id=1DZr5oQuXS6YE280VSqVuqe75KyaI1-Lq"></center>
 
-[그림] : 값이 8이나오는 이유
 
 위의 그림에서 주목해야 할 곳은 노란 부분 입니다. 재귀함수를 호출하는 과정에서 1과 0을 만났을 때 1을 반환하게 되는데 `if i <= 1:` ( 이부분에서 ) 그 횟수를 전부 더하면 8이 나오게 됩니다.
 
 하지만 재귀함수를 이용해서 구하는 방법은 효율적이지 않습니다. 이유는 아래 그림과 같습니다.
+<a href="https://drive.google.com/uc?id=1FCM9GGPvKo-4EkV7UA-jTEFtsSU38z7j" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1FCM9GGPvKo-4EkV7UA-jTEFtsSU38z7j"></center>
+    <center>[그림] : 같은 input값으로 호출되는 함수 확인</center>
+</a>
 
-<center><img src="https://drive.google.com/uc?id=1FCM9GGPvKo-4EkV7UA-jTEFtsSU38z7j"></center>
 
-[그림] : 같은 input값으로 호출되는 함수 확인
 
 위의 그림과 같이 중복되는 함수가 존재하는 것을 알수 있습니다. 피보나치 함수에 큰수를 넣을때마다 함수 호출 횟수가 증가하는 것을 알 수 있습니다.
 
-<center><img src="https://drive.google.com/uc?id=1Qn7Ym6b9B6KMZ6SpL7D8PmlupGZEq04P"></center>
+<a href="https://drive.google.com/uc?id=1Qn7Ym6b9B6KMZ6SpL7D8PmlupGZEq04P" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1Qn7Ym6b9B6KMZ6SpL7D8PmlupGZEq04P"></center>
+    <center>[그림] : input값이 커질 때 마다 증가 확인</center>
+</a>
 
-[그림] : input값이 커질 때 마다 증가 확인
+
 
 
 위와 같은 경우를 다이나믹 프로그램을 통해서 도 빠르고 간단하게 값을 얻어낼 수 있습니다.
@@ -170,10 +182,11 @@ if __name__ == '__main__':
 ```
 
 이 코드는 다음과 같이 동작합니다.
+<a href="https://drive.google.com/uc?id=1gtR65FO5-pW6Dgl5sDOlNZ0x_xMSx7nQ" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1gtR65FO5-pW6Dgl5sDOlNZ0x_xMSx7nQ"></center>
+    <center>[그림] : fibonacci2.py 동작</center>
+</a>
 
-<center><img src="https://drive.google.com/uc?id=1gtR65FO5-pW6Dgl5sDOlNZ0x_xMSx7nQ"></center>
-
-[그림] : fibonacci2.py 동작
 
 위에서 색이 칠해진 곳만 호출됩니다. 총 11번이 호출되고 여기서 중요한 포인트는 0과 1을 제외한 다른 값은 배열의 값을 확인한 뒤 0이 면 값을 저장하고 0이 아니면 더이상 재귀함수로 들어가지 않고 배열에서 값을 사용한다는 점 입니다. 
 
@@ -181,7 +194,12 @@ if __name__ == '__main__':
 
 Pycharm 에서 실행시킨 결과는 다음과 같습니다.
 
-<center><img src="https://drive.google.com/uc?id=1OMo6X3tGnAKAJ2q8q5XKXpUnDt5xDDDI"></center>
+<a href="https://drive.google.com/uc?id=1OMo6X3tGnAKAJ2q8q5XKXpUnDt5xDDDI" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1OMo6X3tGnAKAJ2q8q5XKXpUnDt5xDDDI"></center>
+    <center>[그림] : fibonacci2.py 실행 결과</center>
+</a>
+
+
 ## Bottom-up : 아래에서 올라가는 것
 
 `Bottom-up` 방법은 `Top-down` 방법과 다르게 작은 곳에서 시작해서 큰 곳으로 올라갑니다.
@@ -218,13 +236,18 @@ if __name__ == '__main__':
 ```
 
 위의 코드 동작은 아래와 같습니다.
+<a href="https://drive.google.com/uc?id=1kTKaoiZuk7lQ1LNvuuTavgLnxW6_MuM8" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1kTKaoiZuk7lQ1LNvuuTavgLnxW6_MuM8"></center>
+    <center>[그림] : for 문을 이용한 `Bottom-up` 풀이</center>
+</a>
 
-<center><img src="https://drive.google.com/uc?id=1kTKaoiZuk7lQ1LNvuuTavgLnxW6_MuM8"></center>
-[그림] : for 문을 이용한 `Bottom-up` 풀이
+
+<a href="https://drive.google.com/uc?id=1dj3qQyBxUZaqBIwRc9c9p5A6I0pBKJuo" target='_blank'>
+    <center><img src="https://drive.google.com/uc?id=1dj3qQyBxUZaqBIwRc9c9p5A6I0pBKJuo"></center>
+    <center>[그림] : for 문을 이용한 `Bottom-up` 풀이</center>
+</a>
 
 
-<center><img src="https://drive.google.com/uc?id=1dj3qQyBxUZaqBIwRc9c9p5A6I0pBKJuo"></center>
-[그림] : for 문을 이용한 `Bottom-up` 풀이
 
 기존의 초기값을 배열에 저장하고 값을 계속 추가해주는 방법 입니다. 여기서의 계산은 4번으로 가장 확실하게 줄일 수 있는 것을 확인 할 수 있었습니다.
 
