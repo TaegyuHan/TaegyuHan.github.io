@@ -132,7 +132,7 @@ protected void onRestart() {
 
 활동이 소멸되기 전에 호출됩니다. 시스템은 다음 중 하나에 해당할 때 이 콜백을 호출합니다.
 
-1. (사용자가 활동을 완전히 닫거나 활동에서 `[finish()](https://developer.android.com/reference/android/app/Activity?hl=ko#finish())`가 호출되어) 활동이 종료되는 경우
+1. (사용자가 활동을 완전히 닫거나 활동에서 `finish()`가 호출되어) 활동이 종료되는 경우
 2. 구성 변경(예: 기기 회전 또는 멀티 윈도우 모드)으로 인해 시스템이 일시적으로 활동을 소멸시키는 경우
 
 ```java
