@@ -1,5 +1,5 @@
 ---
-title: "[Algorithm] [Algorithm] 부르트 포스(Brute Force) 알고리즘"
+title: "[Algorithm] 부르트 포스(Brute Force) 알고리즘"
 categories: "Algorithm"
 tag:
 toc: true
