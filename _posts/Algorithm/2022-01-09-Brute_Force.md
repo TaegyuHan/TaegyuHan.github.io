@@ -2,12 +2,15 @@
 title: "[Algorithm] 부르트 포스(Brute Force) 알고리즘"
 categories: "Algorithm"
 tag:
+  - "Algorithm"
+  - "Brute Force"
+
+image: /assets/images/algorithm.jpg
 toc: true
 toc_sticky: true
 toc_label: "Table of contents"
 ---
-<br>
-
+Brute Force(부르트 포스) 알고리즘 정리글 입니다.
 
 # 개요
 

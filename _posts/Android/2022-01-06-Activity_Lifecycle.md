@@ -6,6 +6,7 @@ tag:
   - "Android"
   - "App"
 
+image: /assets/images/android.jpg
 toc: true
 toc_sticky: true
 toc_label: "Table of contents"

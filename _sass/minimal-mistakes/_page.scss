@@ -562,3 +562,15 @@ body {
     }
   }
 }
+
+
+/*
+   Post Image
+   ========================================================================== */
+.featured-image-post {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    filter: brightness(50%);
+    margin-bottom: 20px !important; 
+}

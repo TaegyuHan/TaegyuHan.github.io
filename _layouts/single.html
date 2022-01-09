@@ -26,6 +26,12 @@ layout: default
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
+          {% if page.image %}
+            <img src="{{ page.image | relative_url }}" alt="post-image" class="featured-image-post">
+          {% else %}
+            <img src="/assets/images/default.jpg" alt="post-image" class="featured-image-post">
+          {% endif %}
+
           {% if page.title %}<h1 id="page-title" class="page__title p-name" itemprop="headline">
             <a href="{{ page.url | absolute_url }}" class="u-url" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
           </h1>{% endif %}

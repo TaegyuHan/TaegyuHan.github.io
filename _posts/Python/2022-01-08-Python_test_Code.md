@@ -5,11 +5,11 @@ categories: "Stroy"
 tag:
   - "Stroy"
 
+image: /assets/images/python.png
 toc: true
 toc_sticky: true
 toc_label: "Table of contents"
 ---
-<br>
 
 
 이번 포스팅은 `Python` 테스트 코드를 작성하는 법을 정리하려고 합니다.

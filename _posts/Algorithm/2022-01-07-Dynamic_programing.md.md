@@ -5,12 +5,14 @@ categories: "Algorithm"
 tag:
   - "Algorithm"
   - "Dynamic programming"
-
+  
+image: /assets/images/algorithm.jpg
 toc: true
 toc_sticky: true
 toc_label: "Table of contents"
 ---
-<br>
+Dynamic programming(다이나믹프로그래밍 알고리즘 정리글 입니다.
+
 
 # 개요
 
