@@ -1,0 +1,37 @@
+var store = [{
+        "title": "[Story] 블로그 시작!",
+        "excerpt":"개발 블로그를 시작하기로 하였습니다. 안녕하세요~ ^^  ","categories": ["Stroy"],
+        "tags": ["Stroy"],
+        "url": "/stroy/start/",
+        "teaser": null
+      },{
+        "title": "[Android] 안드로이드 프로젝트 폴더 구조",
+        "excerpt":"안드로이드 프로젝트를 시작하면 생성되는 폴더들의 구조와 사용법을 알기 위해서 정리해보기로 했다. 프로젝트가 생성되고 만들어진 (파일, 폴더)는 다음과 같습니다. [그림] 프로젝트 생성 폴더 구조 사용 IDE : Android Studio 간단 요약 ├─manifests │ └─AndroidManifest.xml # 앱에 관한 필수 정보 │ ├─java │ └─com.example.android_practice │ ├─ MainActivity.xml # 앱이 실행되는 파일 입니다....","categories": ["Android"],
+        "tags": ["Android","App","Folder structure"],
+        "url": "/android/folder_structure/",
+        "teaser": null
+      },{
+        "title": "[Android] 안드로이드 생명( Activity LifeCycle ) 주기",
+        "excerpt":"안드로이드는 Activity Lifecycle 로 작동하게 되는데 정리를 해보기로 했습니다. [그림] 활동 수명 주기를 간략하게 표현한 그림 위의 그림은 안드로이드 개발자 문서에서 가져온 것입니다. 위으 그림을 기반으로 정리를 시작하겠습니다. 활동 주기는 크게 7가지로 이루어져 있습니다. onCreate() onStart() onResume() onPause() onStop() onRestart() onDestroy() onCreate( ) Activity가 실행되었을 때 최초로 실행되는 메소드 입니다....","categories": ["Android"],
+        "tags": ["Android","App"],
+        "url": "/android/Activity_Lifecycle/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] Dynamic programming (다이나믹프로그래밍) 정리",
+        "excerpt":"Dynamic programming(다이나믹프로그래밍 알고리즘 정리글 입니다. 개요 다이나믹프로그래밍Dynamic programming 줄여서 DP 라고도 하며 한국어로는 동적 계획법이라 한다. 동적 계획 법은 한자어로 표현하면 動的 計劃法 ( 동적 계획법 ) 이다. 動 : 움직일 동 的 : 과녁 적/밝을 적 計 : 설 계 劃 : 그을 획 法 : 법 법 한자어의 뜻을...","categories": ["Algorithm"],
+        "tags": ["Algorithm","Dynamic programming"],
+        "url": "/algorithm/Dynamic_programing.md/",
+        "teaser": null
+      },{
+        "title": "[Python] 테스트 코드 작성하기 ( Test Code )",
+        "excerpt":"이번 포스팅은 Python 테스트 코드를 작성하는 법을 정리하려고 합니다. 간단한 사칙연산을 수행하는 코드 작성후 테스트 코드를 작성하는 법을 익히기로 하였습니다. 계산기 예시 코드 calc.py class Calc: @staticmethod def add(x, y): \"\"\"더하기\"\"\" return x + y @staticmethod def subtract(x, y): \"\"\"빼기\"\"\" return x - y @staticmethod def multiply(x, y): \"\"\"곱하기\"\"\" return...","categories": ["Stroy"],
+        "tags": ["Stroy"],
+        "url": "/stroy/Python_test_Code/",
+        "teaser": null
+      },{
+        "title": "[Algorithm] 부르트 포스(Brute Force) 알고리즘",
+        "excerpt":"Brute Force(부르트 포스) 알고리즘 정리글 입니다. 개요 부르트 포스 알고리즘 Brute Force 는 모든 경우의 수를 확인하는 알고리즘 입니다. Brute Force 이해하기 백준 1075번 문제를 통해서 Brute Force 알고리즘을 정리 해보기로 했습니다. 문제는 다음과 같습니다. 두 정수 N과 F가 주어진다. 정수 N의 가장 뒤 두 자리를 적절히 바꿔서 N을 F로...","categories": ["Algorithm"],
+        "tags": ["Algorithm","Brute Force"],
+        "url": "/algorithm/Brute_Force/",
+        "teaser": null
+      }]

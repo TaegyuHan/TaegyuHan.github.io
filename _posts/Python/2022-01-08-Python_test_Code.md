@@ -1,9 +1,9 @@
 ---
 title: "[Python] 테스트 코드 작성하기 ( Test Code )"
 
-categories: "Stroy"
+categories: "Python"
 tag:
-  - "Stroy"
+  - "Python"
 
 image: /assets/images/python.png
 toc: true

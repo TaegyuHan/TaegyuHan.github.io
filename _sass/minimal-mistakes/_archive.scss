@@ -20,6 +20,20 @@
 
 .archive__item {
   position: relative;
+  border: 5px solid;
+  border-color: #1E1E1F;
+  margin: 0 0.5em 15px 0.5em;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+
+  .archive__item-excerpt {
+    margin: 0.5em;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
 
   a {
     position: relative;
@@ -44,7 +58,8 @@
 }
 
 .archive__item-title {
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin: 0.25em 0.3em 0.1em 0.3em;
   font-family: $sans-serif-narrow;
   line-height: initial;
   overflow: hidden;
@@ -126,7 +141,7 @@
 
 .list__item {
   .page__meta {
-    margin: 0 0 4px;
+    margin: 0 0.5em 0 0.5em;
     font-size: 1em;
   }
 }
@@ -197,7 +212,7 @@
   }
 
   .page__meta {
-    margin: 0 0 4px;
+    margin: 0.2em 0.4em 0 0.4em;
     font-size: 1em;
   }
 

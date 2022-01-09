@@ -14,11 +14,11 @@
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     {% if post.image %}
       <div class="archive__item-teaser">
-        <img src="{{ post.image | relative_url }}" alt="post image" class="post-list-image">
+        <img src="{{ post.image | relative_url }}" alt="post image" class="post-list-image-home">
       </div>
     {% else %}
     <div class="archive__item-teaser">
-      <img src="/assets/images/default.jpg" alt="post image" class="post-list-image">
+      <img src="/assets/images/default.jpg" alt="post image" class="post-list-image-home">
     </div>
     {% endif %}
     <h2 class="archive__item-title no_toc" itemprop="headline">
