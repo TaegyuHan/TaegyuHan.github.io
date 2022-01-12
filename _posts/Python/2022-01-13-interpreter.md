@@ -1,5 +1,5 @@
 ---
-title: "[Python] 인터프리터 언어 파이썬"
+title: "[Python] 인터프리터 언어 파이썬 ByteCode 확인하기"
 categories: "Python"
 tag:
     - "Python"
