@@ -38,8 +38,6 @@ Dynamic programming(다이나믹프로그래밍 알고리즘 정리글 입니다
     <center>[그림] : 피보나치수열 설명</center>
 </a>
 
-
-
 여기서 5번째 오는 수를 code로 구해보면 재귀함수를 통해서 다음과 같음 수를 정의할 수 있습니다.
 
 fibonacci.py
