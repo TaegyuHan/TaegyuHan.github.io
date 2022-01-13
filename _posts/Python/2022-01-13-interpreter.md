@@ -2,16 +2,14 @@
 title: "[Python] 인터프리터 언어 파이썬 ByteCode 확인하기"
 categories: "Python"
 tag:
-    - "Python"
-    - "interpreter"
-
+  - "Python"
+  - "interpreter"
 image: /assets/images/python.png
 toc: true
 toc_sticky: true
 toc_label: "Table of contents"
 ---
 
-category: Python
 
 인터프리터 언어인 `Python`이 Python 코드에서 기계어까지 진행되는 것까지 정리하는 글 입니다.
 

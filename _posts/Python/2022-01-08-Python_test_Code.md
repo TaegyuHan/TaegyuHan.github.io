@@ -1,6 +1,5 @@
 ---
 title: "[Python] 테스트 코드 작성하기 ( Test Code )"
-
 categories: "Python"
 tag:
   - "Python"
@@ -16,7 +15,6 @@ toc_label: "Table of contents"
 
 간단한 사칙연산을 수행하는 코드 작성후 테스트 코드를 작성하는 법을 익히기로 하였습니다.
 
----
 
 # 계산기 예시 코드
 
