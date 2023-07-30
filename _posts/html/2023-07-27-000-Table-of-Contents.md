@@ -8,7 +8,7 @@ header:
   #     url: "https://www.acmicpc.net/problem/1000"
 categories:
   - HTML5
-  - 
+
 tags:
     - HTML 태그
     - 기본 문법
