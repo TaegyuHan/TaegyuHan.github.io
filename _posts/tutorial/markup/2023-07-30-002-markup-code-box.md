@@ -10,9 +10,7 @@ categories:
   - markup
 
 tags:
-  - alignment
-  - content
-  - css
+  - code box
   - markup
 
 toc: true

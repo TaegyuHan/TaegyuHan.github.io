@@ -11,8 +11,6 @@ categories:
 
 tags:
   - alignment
-  - content
-  - css
   - markup
 
 toc: true

@@ -10,10 +10,8 @@ categories:
   - markup
 
 tags:
-  - alignment
-  - content
-  - css
-  - markup
+  - html
+  - markdown
 
 toc: true
 toc_label: "Table Of Contents"
