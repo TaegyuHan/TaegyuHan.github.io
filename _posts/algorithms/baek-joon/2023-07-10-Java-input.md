@@ -17,6 +17,7 @@ tags:
 
 toc: true
 toc_label: "Table Of Contents"
+show_date: true
 
 
 last_modified_at: 2023-07-10T12:52:00
