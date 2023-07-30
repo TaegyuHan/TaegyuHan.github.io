@@ -15,7 +15,7 @@ tags:
 
 toc: true
 toc_label: "Table Of Contents"
-toc_sticky: true  # 목차 고정
+
 
 last_modified_at: 2023-07-28T11:37:00
 ---
