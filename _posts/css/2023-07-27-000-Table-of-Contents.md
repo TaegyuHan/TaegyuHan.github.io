@@ -21,6 +21,10 @@ show_date: true
 last_modified_at: 2023-07-28T11:37:00
 ---
 
-CSS 목차 입니다.
+CSS 정리글의 목차 입니다.
 
-# [1. 선택자](https://taegyuhan.github.io/css/001-selector/)
+# [1. 선택자]({{ site.url }}{{ site.baseurl }}/css/001-selector/)
+---
+# [2. Display]({{ site.url }}{{ site.baseurl }}/css/002-display/)
+---
+# [3. Position]({{ site.url }}{{ site.baseurl }}/css/003-position/)
