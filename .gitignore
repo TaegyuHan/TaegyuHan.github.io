@@ -31,3 +31,6 @@ _site
 # 테스트 블로그
 /test/*
 /docs/*
+
+# git 작성방법
+git-content.txt
