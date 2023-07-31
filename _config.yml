@@ -21,7 +21,7 @@ title_separator          : "-"
 subtitle                 : "궁금한 것을 기록하는 개발 블로그" # site tagline that appears below site title in masthead
 name                     : "Tae gyu Han"
 description              : "An amazing website."
-url                      : "https://taegyuhan.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://taegyuhan.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "TaegyuHan/TaegyuHan.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
