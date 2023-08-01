@@ -11,6 +11,7 @@ categories:
 
 tags:
     - linux
+    - 목차
     - 기본 명령어
 
 toc: true
