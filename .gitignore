@@ -37,3 +37,6 @@ git-content.txt
 
 # draw
 /draw
+*.bkp
+*.dtmp
+*.drawio
