@@ -1,9 +1,9 @@
 ---
-name: "블로그 포스트 작성"
-about: "블로그 포스트를 작성할 때 사용하는 템플릿입니다."
+name: 블로그 포스트 작성
+about: 블로그 포스트를 작성할 때 사용하는 템플릿입니다.
 title: "[POST] 제목을 작성해주세요."
-labels: 'POST'
-assignees: ''
+labels: POST
+assignees: TaegyuHan
 
 ---
 
