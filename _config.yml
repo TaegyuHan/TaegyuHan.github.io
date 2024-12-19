@@ -298,6 +298,8 @@ defaults:
       comments: true
       share: true
       related: true
+      toc: true
+      toc_sticky: true
 
 
 # codepen 설정 (자신의 codepen id)

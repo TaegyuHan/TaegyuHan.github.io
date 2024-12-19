@@ -71,21 +71,19 @@
   }
 }
 
+.sidebar__right::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar__right {
   margin-bottom: 1em;
 
-  @include breakpoint($large) {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: $right-sidebar-width-narrow;
-    margin-right: -1 * $right-sidebar-width-narrow;
-    padding-left: 1em;
-    z-index: 10;
+  @include breakpoint($x-large) {
+    width: 400px;
+    margin-right: -1 * 400px;
 
     &.sticky {
       @include clearfix();
-      position: -webkit-sticky;
       position: sticky;
       top: 2em;
       float: right;
@@ -93,15 +91,9 @@
       .toc {
         .toc__menu {
           overflow-y: auto;
-          max-height: calc(100vh - 7em);
         }
       }
     }
-  }
-
-  @include breakpoint($x-large) {
-    width: $right-sidebar-width;
-    margin-right: -1 * $right-sidebar-width;
   }
 }
 
