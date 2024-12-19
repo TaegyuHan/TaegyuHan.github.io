@@ -18,9 +18,9 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 locale                   : "en-US"
 title                    : "Han Blog"
 title_separator          : "-"
-subtitle                 : "궁금한 것을 기록하는 개발 블로그" # site tagline that appears below site title in masthead
+subtitle                 : # "과정을 즐기자!"
 name                     : "Tae gyu Han"
-description              : "An amazing website."
+description              : "궁금한 것을 탐구하고 기록하는 블로그 입니다."
 url                      : "https://taegyuhan.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "TaegyuHan/TaegyuHan.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -112,11 +112,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Tae gyu Han"
-  avatar           : "/assets/images/author/author.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Web 개발을 공부해요"
-  location         : "Incheon in South Korea"
-  email            : 
+  name             : "Taeco Bug"
+  avatar           : # "/assets/images/author/author.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : # "과정을 즐기자!"
+  location         : # "Incheon in South Korea"
+  email            : "gksxorb147@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -290,10 +290,10 @@ defaults:
   # _posts
   - scope:
       path: ""
-      type: posts
+      type: "posts"
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
       comments: true
       share: true
