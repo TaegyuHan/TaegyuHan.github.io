@@ -3,6 +3,7 @@
    ========================================================================== */
 
 .masthead {
+  background-color: $background-color-header;
   position: relative;
   border-bottom: 1px solid $border-color;
   -webkit-animation: $intro-transition;
