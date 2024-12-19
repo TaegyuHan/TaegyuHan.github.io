@@ -576,3 +576,16 @@ body {
     }
   }
 }
+
+/*
+   code box header (copy button)
+   ========================================================================== */
+.copy-code-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  color: #000000;
+  padding: 5px 5px;
+  cursor: pointer;
+}
