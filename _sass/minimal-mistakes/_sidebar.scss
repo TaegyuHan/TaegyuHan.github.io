@@ -80,7 +80,7 @@
 
   @include breakpoint($x-large) {
     width: 400px;
-    margin-right: -1 * 400px;
+    margin-right: -1 * 440px;
 
     &.sticky {
       @include clearfix();
