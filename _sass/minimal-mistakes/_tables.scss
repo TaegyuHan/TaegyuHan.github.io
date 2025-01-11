@@ -37,3 +37,13 @@ td,
 th {
   vertical-align: middle;
 }
+
+.table-wrapper {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 1.3em;
+}
+
+.table-wrapper table {
+  margin: 0 auto;
+}
