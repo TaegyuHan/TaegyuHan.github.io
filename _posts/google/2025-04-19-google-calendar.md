@@ -1,7 +1,7 @@
 ---
 title: "[일정관리] Google Calendar 사용 방법 정리"
 
-tagline: "구글 캘린더를 활용한 효율적인 일정 관리와 시간 계획 방법"
+tagline: "구글 캘린더 사용 방법 정리"
 
 header:
   overlay_image: /assets/post/google/overlay.png
