@@ -6,6 +6,7 @@ tagline: "일관성 있는 문서를 작성하기 위한 첫걸음"
 header:
   overlay_image: /assets/post/template/overlay.jpg
   overlay_filter: 0.5
+  
 categories:
   - template
 
