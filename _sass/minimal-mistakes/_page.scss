@@ -589,3 +589,18 @@ body {
   padding: 5px 5px;
   cursor: pointer;
 }
+
+/*
+   mermaid
+   ========================================================================== */
+.mermaid-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 2em 0;
+}
+
+.mermaid {
+  max-width: 100%;
+}
