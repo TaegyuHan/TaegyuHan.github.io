@@ -1,0 +1,38 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: 플로그 포스팅 작성 초안
+globs: 
+---
+
+아래의 글을 시작으로 작성한다.
+
+```md
+---
+title: "[카테고리] 블로그 제목"
+
+tagline: "한줄 설명"
+
+header:
+  overlay_image: /assets/post/카테고리/overlay.png
+  overlay_filter: 0.5
+
+categories:
+  - 카테고리
+
+tags:
+  - 태그 1
+  - 태그 2
+  - 태그 3
+
+toc: true
+show_date: true
+
+last_modified_at: 현재 시각
+---
+
+
+```
