@@ -4,7 +4,7 @@ title: "[생산성] GitHub Project를 활용한 이슈 관리 방법"
 tagline: "GitHub Project를 활용한 이슈 관리 방법에 대한 개인적인 경험 공유"
 
 header:
-  overlay_image: /assets/post/plan/2025-05-11-blog-issue-management/overlay.png
+  overlay_image: /assets/post/plan/2025-05-11-issue-management/overlay.png
   overlay_filter: 0.9
 
 categories:
