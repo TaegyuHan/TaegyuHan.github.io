@@ -4,7 +4,7 @@ title: "[생산성] 개인적인 파일 관리 방법 정리"
 tagline: "효율적인 파일 관리와 디렉토리 구조화 방법에 대한 개인적인 경험 공유"
 
 header:
-  overlay_image: /assets/post/plan/2025-04-21-file-management/overlay.png
+  overlay_image: /assets/post/plan/2025-04-21-file-management-pattern/overlay.png
   overlay_filter: 0.5
 
 categories:
