@@ -3,9 +3,6 @@
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background: 
-    linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.90)),
-    url('/assets/images/page-main-image.jpg');
   background-size: cover; /* cover: 꽉 채움, contain: 전체 보임 */
   background-position: center;
   aspect-ratio: 16/9; /* 원하는 비율로 변경 (예: 4/3, 1/1 등) */
@@ -29,13 +26,20 @@
 }
 </style>
 
-<div id="fullscreen-bg-image" style="display:none;">
-  <img src="/assets/images/page-main-image.jpg" alt="배경 이미지">
-</div>
-
 <script>
+// 이미지 2개 중 1개를 랜덤 선택
+var images = [
+  '/assets/images/bg/page-main-image1.jpg',
+  '/assets/images/bg/page-main-image2.jpg'
+];
+var selected = images[Math.floor(Math.random() * images.length)];
+var bg = document.getElementById('fullscreen-bg-image');
+if (bg) {
+  bg.style.background =
+    "linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.90)), url('" + selected + "')";
+}
+
 window.addEventListener('scroll', function() {
-  console.log('Scroll position:', window.scrollY);
   var triggerHeight = 400; // 400px 이상 스크롤 시 등장
   var bg = document.getElementById('fullscreen-bg-image');
   if (!bg) return;
