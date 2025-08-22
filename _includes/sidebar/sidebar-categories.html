@@ -1,0 +1,19 @@
+<div class="sidebar-categories">
+  <h4>카테고리</h4>
+  <style>
+    .sidebar-categories ul {
+      list-style: none;
+      padding-left: 0;
+    }
+  </style>
+  <ul>
+    {% assign categories = site.categories | sort %}
+    {% for category in categories %}
+      <li>
+        <a href="{{ site.baseurl }}/categories/#{{ category[0] | slugify }}">
+          {{ category[0] }} <span>[{{ category[1].size }}]</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
