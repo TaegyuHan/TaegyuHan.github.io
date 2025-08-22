@@ -26,7 +26,7 @@ layout: default
   {% include post/page-main-image.html %}
 
   <!-- 포스트 읽기 진행률 바 -->
-  {% include post/reading_progress_bar.html %}
+  {% include post/reading-progress-bar.html %}
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
@@ -56,10 +56,13 @@ layout: default
         {{ content }}
         
         <!-- 포스트 마무리 글 -->
-        {% include post/post_ending.html %}
+        {% include post/post-ending.html %}
 
         <!-- 최상단으로 향하는 버튼 -->
-        {% include post/scroll_to_top_button.html %}
+        {% include post/scroll-to-top-button.html %}
+
+        <!-- 코드 박스 디자인 -->
+        {% include post/code-box.html %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>

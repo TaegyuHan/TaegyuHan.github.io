@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 pre {
-    padding: 20px;
-    background: #434343;
+    /* padding: 20px; */
+    /* background: #434343; */
 }
 
 body .gist .line-data, body .gist .file-data, body .gist .line-numbers {

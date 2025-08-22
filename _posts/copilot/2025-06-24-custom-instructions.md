@@ -65,13 +65,12 @@ last_modified_at: 2025-06-24T18:19:00
 - 특정 작업(task)별로 코드 생성 규칙을 정의하고, 어떤 지침을 어떤 요청에 포함할지 더 세밀하게 제어하고 싶다면 이 파일을 사용한다.
 
 ### 사용 예시 
-```markdown
+{% highlight markdown linenos %}
 ---
 description: 이 지침 파일에 대한 간단한 설명
 applyTo: "*.js"  ← 자동 적용할 파일 경로 패턴 (glob)
 ---
-
-```
+{% endhighlight %}
 
 ### **.instructions.md** 파일 직접 설정하기
 

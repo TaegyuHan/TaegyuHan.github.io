@@ -1,0 +1,159 @@
+
+<!-- 코드박스 복사 기능 스타일 -->
+<style>
+.copy-all-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: #23262f;
+  color: #e3e6ed;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 14px;
+  font-size: 0.85em;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+.copy-all-btn:hover {
+  background: #181a20;
+}
+.copy-lineno {
+  cursor: pointer;
+  font-size: 0.9em;
+  width: 1.2em;
+  transition: background 0.3s;
+}
+.copy-lineno.copied {
+  background: #23262f;
+  color: #fff;
+}
+.global-copy-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  background: #23262f;
+  color: #e3e6ed;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 99999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+</style>
+
+<!-- 코드박스 복사 기능 스크립트 -->
+<script>
+document.querySelectorAll('.rouge-table').forEach(function(table) {
+  const linenoPre = table.querySelector('.gutter .lineno');
+  const codePre = table.querySelector('.code pre');
+  if (!linenoPre || !codePre) return;
+
+  const lines = codePre.innerText.split('\n');
+  linenoPre.innerHTML = linenoPre.innerText.split('\n').map((num, idx) => {
+    if (!num.trim()) return '';
+    return `<span class="copy-lineno" data-idx="${idx}">${num}</span><br>`;
+  }).join('');
+
+  // 전체 복사 버튼 생성 (오른쪽 상단, 처음엔 숨김)
+  let copyAllBtn = table.querySelector('.copy-all-btn');
+  if (!copyAllBtn) {
+    copyAllBtn = document.createElement('button');
+    copyAllBtn.className = 'copy-all-btn';
+    copyAllBtn.innerHTML = '<i class="fa-solid fa-clone" style="font-size:1em; margin-right:6px;"></i>전체 복사';
+    table.style.position = 'relative';
+    table.appendChild(copyAllBtn);
+
+    let hideTimeout;
+
+    // 코드 박스 클릭 시 버튼 나타남
+    table.addEventListener('mousedown', function(e) {
+      // 라인번호 클릭 시 전체 복사 버튼 활성화 방지
+      if (e.target.classList.contains('copy-lineno')) return;
+      copyAllBtn.style.opacity = '1';
+      copyAllBtn.style.pointerEvents = 'auto';
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        copyAllBtn.style.opacity = '0';
+        copyAllBtn.style.pointerEvents = 'none';
+      }, 3000);
+    });
+
+    // 버튼 클릭 시 복사 및 알림
+    copyAllBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navigator.clipboard.writeText(codePre.innerText);
+
+      copyAllBtn.innerHTML = '<i class="fa-solid fa-check" style="font-size:1em; margin-right:6px;"></i>복사됨!';
+      setTimeout(() => {
+        copyAllBtn.innerHTML = '<i class="fa-solid fa-clone" style="font-size:1em; margin-right:6px;"></i>전체 복사';
+      }, 1200);
+
+      // 브라우저 하단 복사 알림 표시
+      let globalNotice = document.querySelector('.global-copy-notice');
+      if (!globalNotice) {
+        globalNotice = document.createElement('div');
+        globalNotice.className = 'global-copy-notice';
+        globalNotice.textContent = '복사되었습니다!';
+        document.body.appendChild(globalNotice);
+      }
+      globalNotice.textContent = '복사되었습니다!';
+      globalNotice.style.opacity = '1';
+      setTimeout(() => {
+        globalNotice.style.opacity = '0';
+      }, 1200);
+
+      // 버튼 숨김 타이머 리셋
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        copyAllBtn.style.opacity = '0';
+        copyAllBtn.style.pointerEvents = 'none';
+      }, 3000);
+    });
+  }
+
+  // 브라우저 하단 복사 알림 요소 생성 (한 번만)
+  let globalNotice = document.querySelector('.global-copy-notice');
+  if (!globalNotice) {
+    globalNotice = document.createElement('div');
+    globalNotice.className = 'global-copy-notice';
+  globalNotice.textContent = '복사되었습니다!';
+    document.body.appendChild(globalNotice);
+  }
+
+  linenoPre.querySelectorAll('.copy-lineno').forEach(function(span) {
+    span.addEventListener('click', function(e) {
+      const idx = parseInt(span.dataset.idx, 10);
+      const code = lines[idx] || '';
+      navigator.clipboard.writeText(code);
+
+      // 복사 아이콘으로 변경 및 배경 어둡게
+      span.innerHTML = '<i class="fa-solid fa-copy"></i>';
+      span.classList.add('copied');
+      setTimeout(() => {
+        span.textContent = idx + 1;
+        span.style.fontSize = '0.9em';
+        span.classList.remove('copied');
+      }, 1000);
+
+      // 브라우저 하단 복사 알림 표시
+  globalNotice.textContent = '복사되었습니다!';
+      globalNotice.style.opacity = '1';
+      setTimeout(() => {
+        globalNotice.style.opacity = '0';
+      }, 1200);
+
+      // 전체 복사 버튼은 라인번호 클릭 시 활성화하지 않음
+    });
+  });
+});
+</script>
