@@ -1,0 +1,48 @@
+<style>
+#fullscreen-bg-image {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: 
+    linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.90)),
+    url('/assets/images/page-main-image.jpg');
+  background-size: cover; /* cover: 꽉 채움, contain: 전체 보임 */
+  background-position: center;
+  aspect-ratio: 16/9; /* 원하는 비율로 변경 (예: 4/3, 1/1 등) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -99999;
+  opacity: 0;
+  transition: opacity 0.8s;
+  pointer-events: none;
+}
+#fullscreen-bg-image.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+#fullscreen-bg-image img {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+}
+</style>
+
+<div id="fullscreen-bg-image" style="display:none;">
+  <img src="/assets/images/page-main-image.jpg" alt="배경 이미지">
+</div>
+
+<script>
+window.addEventListener('scroll', function() {
+  console.log('Scroll position:', window.scrollY);
+  var triggerHeight = 400; // 400px 이상 스크롤 시 등장
+  var bg = document.getElementById('fullscreen-bg-image');
+  if (!bg) return;
+  if (window.scrollY > triggerHeight) {
+    bg.classList.add('show');
+  } else {
+    bg.classList.remove('show');
+  }
+});
+</script>

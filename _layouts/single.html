@@ -18,8 +18,12 @@ layout: default
   {% endunless %}
 {% endif %}
 
+<div id="fullscreen-bg-image"></div>
 <div id="main" role="main">
   {% include sidebar.html %}
+
+  <!-- 페이지 대표 이미지 -->
+  {% include post/page-main-image.html %}
 
   <!-- 포스트 읽기 진행률 바 -->
   {% include post/reading_progress_bar.html %}
