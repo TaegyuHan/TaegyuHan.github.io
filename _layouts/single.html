@@ -54,6 +54,9 @@ layout: default
         <!-- 포스트 마무리 글 -->
         {% include post/post_ending.html %}
 
+        <!-- 최상단으로 향하는 버튼 -->
+        {% include post/scroll_to_top_button.html %}
+
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
