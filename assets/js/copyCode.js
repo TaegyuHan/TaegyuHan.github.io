@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const copyButton = document.createElement('div');
     copyButton.className = 'copy-code-button';
     copyButton.innerHTML = `
-      <img src="/assets/icon/copy.svg" alt="Copy"/>
-      <p>Copy</p>
+      <img src="/assets/icon/copy.svg" alt="전체 복사"/>
+      <p>전체 복사</p>
     `;
 
     copyButton.addEventListener('click', () => {
@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
           copyButton.classList.remove('copied');
           copyButton.innerHTML = `
-            <img src="/assets/icon/copy.svg" alt="Copy" />
-            <p>Copy</p>
+            <img src="/assets/icon/copy.svg" alt="전체 복사" />
+            <p>전체 복사</p>
           `;
           copyButton.disabled = false;
         }, 2000);
