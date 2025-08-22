@@ -21,6 +21,9 @@ layout: default
 <div id="main" role="main">
   {% include sidebar.html %}
 
+  <!-- 포스트 읽기 진행률 바 -->
+  {% include post/reading_progress_bar.html %}
+
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
@@ -47,8 +50,9 @@ layout: default
         {% endif %}
 
         {{ content }}
-
-        {% include post_ending.html %}
+        
+        <!-- 포스트 마무리 글 -->
+        {% include post/post_ending.html %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
