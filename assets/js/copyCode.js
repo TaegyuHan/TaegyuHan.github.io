@@ -87,6 +87,19 @@ document.addEventListener('DOMContentLoaded', function () {
     .global-copy-notice.show {
       opacity: 1;
     }
+
+    .highlighter-rouge,
+    .highlight {
+      overflow-x: auto;
+    }
+
+    .highlighter-rouge pre,
+    .highlight pre,
+    .highlighter-rouge code,
+    .highlight code {
+      white-space: pre;
+      overflow-x: auto;
+    }
   `;
   document.head.appendChild(style);
 
@@ -111,10 +124,9 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
 
     let timer = null;
-    copyButton.addEventListener('click', () => {
+    function copyCodeAction() {
       if (copyButton.disabled) return;
       copyButton.disabled = true;
-
       const code = codeElem.innerText.trim();
       navigator.clipboard.writeText(code).then(() => {
         copyButton.classList.add('copied');
@@ -131,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function () {
           `;
           copyButton.disabled = false;
         }, 2000);
-
         // 브라우저 하단 복사 알림 표시
         globalNotice.textContent = '복사되었습니다!';
         globalNotice.style.opacity = '1';
@@ -139,8 +150,39 @@ document.addEventListener('DOMContentLoaded', function () {
           globalNotice.style.opacity = '0';
         }, 1200);
       });
-    });
+    }
 
+    copyButton.addEventListener('click', copyCodeAction);
+    // <code> 태그 클릭 시 전체 복사
+    if (codeElem.tagName.toLowerCase() === 'code') {
+      codeElem.style.cursor = 'pointer';
+      codeElem.addEventListener('click', copyCodeAction);
+    }
     codeBlock.append(copyButton);
+  });
+
+  // 일반 텍스트 내 인라인 코드 복사 기능 추가
+  // <code class="language-plaintext highlighter-rouge"> 클릭 시 복사
+  document.querySelectorAll('code.language-plaintext.highlighter-rouge').forEach(function(codeElem) {
+    codeElem.style.cursor = 'pointer';
+    codeElem.title = '클릭하면 복사됩니다';
+    codeElem.addEventListener('click', function() {
+      const code = codeElem.innerText.trim();
+      navigator.clipboard.writeText(code).then(() => {
+        // 브라우저 하단 복사 알림 요소 생성 (한 번만)
+        let globalNotice = document.querySelector('.global-copy-notice');
+        if (!globalNotice) {
+          globalNotice = document.createElement('div');
+          globalNotice.className = 'global-copy-notice';
+          globalNotice.textContent = '복사되었습니다!';
+          document.body.appendChild(globalNotice);
+        }
+        globalNotice.textContent = '복사되었습니다!';
+        globalNotice.style.opacity = '1';
+        setTimeout(() => {
+          globalNotice.style.opacity = '0';
+        }, 1200);
+      });
+    });
   });
 });
