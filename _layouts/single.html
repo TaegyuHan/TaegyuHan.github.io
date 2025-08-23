@@ -61,8 +61,8 @@ layout: default
         <!-- 최상단으로 향하는 버튼 -->
         {% include post/scroll-to-top-button.html %}
 
-        <!-- 코드 박스 디자인 -->
-        {% include post/code-box.html %}
+        <!-- 코드 박스 라인 디자인 -->
+        {% include post/code-box-line.html %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>

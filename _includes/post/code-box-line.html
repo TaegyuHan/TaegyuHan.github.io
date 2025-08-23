@@ -1,0 +1,78 @@
+<!-- 코드박스 복사 기능 스타일 -->
+<style>
+.copy-lineno {
+  cursor: pointer;
+  font-size: 0.9em;
+  width: 1.2em;
+  transition: background 0.3s;
+}
+.copy-lineno.copied {
+  background: #23262f;
+  color: #fff;
+}
+.global-copy-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  background: #23262f;
+  color: #e3e6ed;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 99999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+</style>
+
+<!-- 코드박스 라인 복사 기능 스크립트 -->
+<script>
+document.querySelectorAll('.rouge-table').forEach(function(table) {
+  const linenoPre = table.querySelector('.gutter .lineno');
+  const codePre = table.querySelector('.code pre');
+  if (!linenoPre || !codePre) return;
+
+  const lines = codePre.innerText.split('\n');
+  linenoPre.innerHTML = linenoPre.innerText.split('\n').map((num, idx) => {
+    if (!num.trim()) return '';
+    return `<span class="copy-lineno" data-idx="${idx}">${num}</span><br>`;
+  }).join('');
+
+  // 브라우저 하단 복사 알림 요소 생성 (한 번만)
+  let globalNotice = document.querySelector('.global-copy-notice');
+  if (!globalNotice) {
+    globalNotice = document.createElement('div');
+    globalNotice.className = 'global-copy-notice';
+    globalNotice.textContent = '복사되었습니다!';
+    document.body.appendChild(globalNotice);
+  }
+
+  linenoPre.querySelectorAll('.copy-lineno').forEach(function(span) {
+    span.addEventListener('click', function(e) {
+      const idx = parseInt(span.dataset.idx, 10);
+      const code = lines[idx] || '';
+      navigator.clipboard.writeText(code);
+
+      // 복사 아이콘으로 변경 및 배경 어둡게
+      span.innerHTML = '<i class="fa-solid fa-copy"></i>';
+      span.classList.add('copied');
+      setTimeout(() => {
+        span.textContent = idx + 1;
+        span.style.fontSize = '0.9em';
+        span.classList.remove('copied');
+      }, 1000);
+
+      // 브라우저 하단 복사 알림 표시
+      globalNotice.textContent = '복사되었습니다!';
+      globalNotice.style.opacity = '1';
+      setTimeout(() => {
+        globalNotice.style.opacity = '0';
+      }, 1200);
+    });
+  });
+});
+</script>
