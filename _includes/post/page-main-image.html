@@ -2,10 +2,11 @@
 #fullscreen-bg-image {
   position: fixed;
   top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background-size: cover; /* cover: 꽉 채움, contain: 전체 보임 */
-  background-position: center;
-  aspect-ratio: 16/9; /* 원하는 비율로 변경 (예: 4/3, 1/1 등) */
+  width: 100vw; height: 100vh !important;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #000; /* 여백 색상 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,13 +31,21 @@
 // 이미지 2개 중 1개를 랜덤 선택
 var images = [
   '/assets/images/bg/page-main-image1.jpg',
-  '/assets/images/bg/page-main-image2.jpg'
+  '/assets/images/bg/page-main-image2.jpg',
+  '/assets/images/bg/page-main-image3.png',
+  '/assets/images/bg/page-main-image4.png',
+  '/assets/images/bg/page-main-image5.png',
+  '/assets/images/bg/page-main-image6.png',
+  '/assets/images/bg/page-main-image7.png',
+  '/assets/images/bg/page-main-image8.png',
+  '/assets/images/bg/page-main-image9.png',
+  '/assets/images/bg/page-main-image10.png',
 ];
 var selected = images[Math.floor(Math.random() * images.length)];
 var bg = document.getElementById('fullscreen-bg-image');
 if (bg) {
   bg.style.background =
-    "linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.90)), url('" + selected + "')";
+    "linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.90)), url('" + selected + "') no-repeat center center / cover fixed";
 }
 
 window.addEventListener('scroll', function() {
