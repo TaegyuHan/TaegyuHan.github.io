@@ -1,0 +1,282 @@
+<style>
+.search-hotkey-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  background: #23262f;
+  color: #e3e6ed;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  transition: opacity 0.3s;
+}
+.search-hotkey-info {
+  position: fixed;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+  background: #23262f;
+  color: #e3e6ed;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 1em;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  transition: opacity 0.3s;
+}
+#custom-search-popup {
+  display: none;
+  position: fixed;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #23262f;
+  color: #fff;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.22);
+  z-index: 99999;
+  width: 900px;      /* 기본 가로 크기 */
+  max-width: 99vw;   /* 화면 최대 가로 비율 */
+  padding: 32px 28px 24px 28px;
+  border: 1.5px solid #2e3240;
+  animation: popup-fade-in 0.25s;
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #23262f;
+}
+#custom-search-popup::-webkit-scrollbar {
+  width: 8px;
+  background: #23262f;
+  border-radius: 8px;
+}
+#custom-search-popup::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 8px;
+}
+#custom-search-popup::-webkit-scrollbar-thumb:hover {
+  background: #e3e6ed;
+}
+@keyframes popup-fade-in {
+  from { opacity: 0; transform: translateX(-50%) scale(0.96); }
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+#custom-search-popup input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 1.08em;
+  background: #181a20;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+#custom-search-popup input:focus {
+  box-shadow: none;
+}
+#custom-search-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#custom-search-popup li {
+  margin-bottom: 18px;
+  padding: 14px 12px;
+  border-radius: 10px;
+  background: #181a20;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#custom-search-popup .search-title {
+  color: #e3e6ed;
+  font-size: 1.12em;
+  font-weight: 600;
+  margin-bottom: 2px;
+  text-decoration: none;
+}
+#custom-search-popup .search-category-label {
+  font-size: 0.97em;
+  color: #bfc4d6;
+  font-weight: 500;
+  margin-right: 6px;
+}
+#custom-search-popup .search-tag-label {
+  font-size: 0.95em;
+  color: #bfc4d6;
+  font-weight: 500;
+  margin-right: 6px;
+}
+#custom-search-popup .search-category-badge {
+  color: #fff;
+  background: none;
+  border: 1.5px solid #fff;
+  border-radius: 12px;
+  display: inline-block;
+  padding: 3px 12px;
+  margin-right: 6px;
+  font-size: 0.97em;
+  font-weight: 500;
+  box-shadow: none;
+}
+#custom-search-popup .search-tag-badge {
+  color: #fff;
+  background: none;
+  border: 1.5px solid #fff;
+  border-radius: 12px;
+  display: inline-block;
+  padding: 3px 12px;
+  margin-right: 6px;
+  font-size: 0.95em;
+  font-weight: 500;
+  box-shadow: none;
+}
+#custom-search-popup .search-excerpt {
+  font-size: 0.97em;
+  color: #bfc4d6;
+  margin-top: 2px;
+}
+#custom-search-popup a {
+  color: #fff;
+  font-size: 1.08em;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+#custom-search-popup a:hover {
+  color: #0076ff;
+  text-decoration: underline;
+}
+#custom-search-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  background: #181a20;
+  border: none;
+  color: #fff;
+  font-size: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s;
+}
+#custom-search-close:hover {
+  background: #23262f;
+}
+@media (max-width: 1024px) {
+  #custom-search-popup {
+    width: 600px;
+    max-width: 99vw;
+    padding: 24px 12px 18px 12px;
+    border-radius: 8px;
+  }
+}
+@media (max-width: 600px) {
+  #custom-search-popup {
+    width: 99vw;
+    min-width: 0;
+    padding: 12px 4vw 12px 4vw;
+    border-radius: 8px;
+  }
+}
+</style>
+
+<div id="custom-search-popup">
+  <button id="custom-search-close">&times;</button>
+  <input type="search" id="custom-search-input" placeholder="검색어를 입력하세요">
+  <ul id="custom-search-results"></ul>
+</div>
+
+<script>
+function showHotkeyInfo() {
+  let info = document.querySelector('.search-hotkey-info');
+  if (!info) {
+    info = document.createElement('div');
+    info.className = 'search-hotkey-info';
+    document.body.appendChild(info);
+  }
+  info.textContent = '검색 단축키(Ctrl + Shift + F)를 사용하셨습니다!';
+  info.style.opacity = '1';
+  setTimeout(() => {
+    info.style.opacity = '0';
+  }, 1500);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'f') {
+    showHotkeyInfo();
+    var popup = document.getElementById('custom-search-popup');
+    popup.style.display = 'block';
+    document.getElementById('custom-search-input').focus();
+    e.preventDefault();
+  }
+});
+document.getElementById('custom-search-close').onclick = function() {
+  var popup = document.getElementById('custom-search-popup');
+  popup.style.display = 'none';
+  document.getElementById('custom-search-results').innerHTML = '';
+  document.getElementById('custom-search-input').value = '';
+};
+document.getElementById('custom-search-input').onkeyup = function() {
+  var query = this.value.toLowerCase();
+  if(typeof idx === 'undefined' || typeof store === 'undefined') return;
+  var results = idx.search(query);
+  var list = document.getElementById('custom-search-results');
+  list.innerHTML = '';
+  results.slice(0,5).forEach(function(result) {
+    var ref = result.ref;
+    var item = store[ref];
+    var li = document.createElement('li');
+    // 카테고리/태그를 배열로 처리 및 링크 적용 (해시 방식)
+    var categoryBadges = '';
+    if(item.categories) {
+      var cats = Array.isArray(item.categories) ? item.categories : String(item.categories).split(',');
+      categoryBadges = cats.map(function(cat){
+        var url = '/categories/#' + encodeURIComponent(cat.trim().toLowerCase());
+        return '<a href="'+url+'" class="search-category-badge">'+cat.trim()+'</a>';
+      }).join('');
+    }
+    var tagBadges = '';
+    if(item.tags) {
+      var tags = Array.isArray(item.tags) ? item.tags : String(item.tags).split(',');
+      tagBadges = tags.map(function(tag){
+        var url = '/tags/#' + encodeURIComponent(tag.trim().toLowerCase());
+        return '<a href="'+url+'" class="search-tag-badge">'+tag.trim()+'</a>';
+      }).join('');
+    }
+    li.innerHTML =
+      '<a href="'+item.url+'" class="search-title">'+item.title+'</a>' +
+      (categoryBadges ? '<div><span class="search-category-label">카테고리:</span>'+categoryBadges+'</div>' : '') +
+      (tagBadges ? '<div><span class="search-tag-label">태그:</span>'+tagBadges+'</div>' : '') +
+      (item.excerpt ? '<div class="search-excerpt">'+item.excerpt+'</div>' : '');
+    list.appendChild(li);
+  });
+};
+// ESC로 팝업 닫기
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    var popup = document.getElementById('custom-search-popup');
+    popup.style.display = 'none';
+    document.getElementById('custom-search-results').innerHTML = '';
+    document.getElementById('custom-search-input').value = '';
+  }
+});
+</script>
