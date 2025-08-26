@@ -22,22 +22,47 @@
         justify-content: center;
         padding: 0;
     }
+
+    #back-to-top-notice {
+      position: fixed;
+      left: 50%;
+      bottom: 90px;
+      transform: translateX(-50%);
+      background: #23262f;
+      color: #e3e6ed;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 1em;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 99999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      transition: opacity 0.3s;
+    }
 </style>
 
 <button id="back-to-top-btn" title="맨 위로">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
+<div id="back-to-top-notice">최상단으로 이동했습니다!</div>
 
 <script>
-  const btn = document.getElementById('back-to-top-btn');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 200) {
-      btn.style.display = 'flex';
-    } else {
-      btn.style.display = 'none';
-    }
-  });
-  btn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+const btn = document.getElementById('back-to-top-btn');
+const notice = document.getElementById('back-to-top-notice');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 200) {
+    btn.style.display = 'flex';
+  } else {
+    btn.style.display = 'none';
+  }
+});
+btn.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // 알림 표시
+  notice.style.opacity = '1';
+  setTimeout(() => {
+    notice.style.opacity = '0';
+  }, 1200);
+});
 </script>
