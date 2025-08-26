@@ -1,0 +1,99 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const images = Array.from(document.querySelectorAll('.page__content img'));
+  images.forEach(function(img, idx) {
+    img.dataset.zoomIdx = idx;
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+      const overlay = document.getElementById('img-zoom-overlay');
+      const target = document.getElementById('img-zoom-target');
+      let currentIdx = parseInt(img.dataset.zoomIdx, 10);
+      const showImage = (idx) => {
+        target.src = images[idx].src;
+        currentIdx = idx;
+      };
+      showImage(currentIdx);
+      overlay.classList.add('active');
+      document.getElementById('img-zoom-prev').onclick = function(e) {
+        e.stopPropagation();
+        let prevIdx = (currentIdx - 1 + images.length) % images.length;
+        showImage(prevIdx);
+      };
+      document.getElementById('img-zoom-next').onclick = function(e) {
+        e.stopPropagation();
+        let nextIdx = (currentIdx + 1) % images.length;
+        showImage(nextIdx);
+      };
+    });
+  });
+  document.getElementById('img-zoom-overlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
+      document.getElementById('img-zoom-target').src = '';
+    }
+  });
+});
+</script>
+
+<!-- 이미지 확대 오버레이 HTML (인라인 스타일 제거) -->
+<div id="img-zoom-overlay">
+  <button id="img-zoom-prev"><i class="fa-solid fa-chevron-left"></i></button>
+  <img id="img-zoom-target" src="" alt="확대 이미지">
+  <button id="img-zoom-next"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<style>
+#img-zoom-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+#img-zoom-overlay.active {
+  display: flex;
+}
+#img-zoom-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+}
+#img-zoom-prev, #img-zoom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #181a20;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+  cursor: pointer;
+  z-index: 1001;
+  opacity: 0.95;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#img-zoom-prev:hover, #img-zoom-next:hover {
+  background: #23262f;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.32);
+  transform: translateY(-50%) scale(1.08);
+  opacity: 1;
+}
+#img-zoom-prev { left: 32px; }
+#img-zoom-next { right: 32px; }
+#img-zoom-prev i, #img-zoom-next i {
+  color: #fff;
+  font-size: 1.3em;
+}
+</style>

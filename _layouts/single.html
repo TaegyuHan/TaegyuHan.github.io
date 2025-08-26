@@ -64,6 +64,9 @@ layout: default
         <!-- 코드 박스 라인 디자인 -->
         {% include post/code-box-line.html %}
 
+        <!-- 이미지 확대 박스 -->
+        {% include post/image-zoom.html %}
+
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
