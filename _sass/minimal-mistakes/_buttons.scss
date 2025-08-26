@@ -95,3 +95,14 @@
     font-size: $type-size-7;
   }
 }
+
+// follow 버튼 색상 수정
+.btn.btn--inverse {
+  background: #23262f;
+  color: #fff;
+  border: 1.5px solid #2e3240;
+}
+.btn.btn--inverse:hover {
+  background: #181a20;
+  color: #fff;
+}
