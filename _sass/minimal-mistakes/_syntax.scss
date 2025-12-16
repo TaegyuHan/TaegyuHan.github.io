@@ -7,7 +7,7 @@ figure.highlight {
   position: relative;
   margin-top: 1em;
   margin-bottom: 1em;
-  background: #434343;
+  background: $base00;
   color: $base05;
   font-family: $monospace;
   font-size: $type-size-6;
@@ -22,22 +22,22 @@ figure.highlight {
     .highlight, pre, code {
       overflow-x: auto;
       scrollbar-width: thin;
-    scrollbar-color: #fff #23262f;
+    scrollbar-color: $base04 $base02;
     }
   
     // 크롬/엣지/사파리용
     .highlight::-webkit-scrollbar, pre::-webkit-scrollbar, code::-webkit-scrollbar {
       height: 8px;
-      background: #23262f;
+      background: $base02;
       border-radius: 8px;
     }
     .highlight::-webkit-scrollbar-thumb, pre::-webkit-scrollbar-thumb, code::-webkit-scrollbar-thumb {
-      background: #fff;
+      background: $base04;
       border-radius: 8px;
       transition: background 0.2s;
     }
     .highlight::-webkit-scrollbar-thumb:hover, pre::-webkit-scrollbar-thumb:hover, code::-webkit-scrollbar-thumb:hover {
-      background: #e3e6ed;
+      background: lighten($base04, 10%);
     }
 }
 
