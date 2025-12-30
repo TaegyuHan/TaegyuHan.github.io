@@ -24,8 +24,6 @@ show_date: true
 last_modified_at: 2025-12-30T23:55:00
 ---
 
-## 들어가며
-
 Spring Boot 개발자라면 누구나 `@Transactional`을 사용해봤을 거에요. 하지만 **단순히 "메서드에 붙이면 트랜잭션이 된다"고 생각하는 것만으로는 충분하지 않습니다.** 
 
 실무에서 자주 마주치는 "분명히 @Transactional을 붙였는데 왜 롤백이 안 되지?"라는 문제들은 대부분 **@Transactional의 동작 원리를 모르기 때문**에 발생해요. 
