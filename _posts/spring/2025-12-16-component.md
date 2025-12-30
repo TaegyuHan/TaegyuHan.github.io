@@ -4,7 +4,7 @@ title: "[Spring] `@Component`는 왜 사용하는 걸까?"
 tagline: "@Component가 생겨난 이유와 역할에 대하여"
 
 header:
-  overlay_image: /assets/post/spring/overlay.png
+  overlay_image: /assets/post/spring/2025-12-16-component/overlay.png
   overlay_filter: 0.9
 
 categories:
