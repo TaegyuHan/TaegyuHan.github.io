@@ -8,7 +8,8 @@ header:
   overlay_filter: 0.9
 
 categories:
-  - spring
+  - Spring
+
 tags:
   - 컴포넌트
   - 설계
