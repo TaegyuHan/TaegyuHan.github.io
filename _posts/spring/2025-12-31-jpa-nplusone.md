@@ -4,7 +4,7 @@ title: "[Spring] JPA N+1 문제 완벽 해결하기"
 tagline: "1:N 관계에서 발생하는 N+1 쿼리 문제를 Fetch Join, EntityGraph, Batch Size로 해결하는 실무 가이드"
 
 header:
-  overlay_image: /assets/post/spring/2025-12-31-jpa-n-plus-one-problem/overlay.png
+  overlay_image: /assets/post/spring/2025-12-31-jpa-nplusone/overlay.png
   overlay_filter: 0.5
 
 categories:
