@@ -1,0 +1,36 @@
+/* Mobile author card layout tweak: name left, follow button right */
+@media (max-width: $large) {
+  .h-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-auto-rows: auto;
+    align-items: center;
+    gap: 8px 12px;
+  }
+
+  .h-card .author__content {
+    padding: 0;
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .h-card .author__name {
+    margin: 0;
+  }
+
+  .h-card .author__urls-wrapper {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .h-card .author__urls-wrapper button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+}
