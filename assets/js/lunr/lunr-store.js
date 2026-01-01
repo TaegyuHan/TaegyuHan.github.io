@@ -43,7 +43,9 @@ var store = [
         "categories": {{ doc.categories | jsonify }},
         "tags": {{ doc.tags | jsonify }},
         "url": {{ doc.url | relative_url | jsonify }},
-        "teaser": {{ teaser | relative_url | jsonify }}
+        "teaser": {{ teaser | relative_url | jsonify }},
+        "date": {{ doc.date | date: '%s' | jsonify }},
+        "lastmod": {{ doc.last_modified_at | default: doc.date | date: '%s' | jsonify }}
       }{%- unless forloop.last and l -%},{%- endunless -%}
     {%- endfor -%}
   {%- endfor -%}{%- if site.lunr.search_within_pages -%},
@@ -78,7 +80,9 @@ var store = [
             replace:"</h6>", " "|
           strip_html | strip_newlines | truncatewords: 50 | jsonify }},
         {%- endif -%}
-      "url": {{ doc.url | absolute_url | jsonify }}
+        "url": {{ doc.url | absolute_url | jsonify }},
+          "date": {{ doc.date | date: '%s' | jsonify }},
+          "lastmod": {{ doc.last_modified_at | default: doc.date | date: '%s' | jsonify }}
   }{%- unless forloop.last and l -%},{%- endunless -%}
   {%- endfor -%}
 {%- endif -%}]

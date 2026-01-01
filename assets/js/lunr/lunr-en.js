@@ -38,6 +38,14 @@ $(document).ready(function() {
           }
         })
       });
+
+    // 최신 순으로 정렬 (lastmod > date > 점수)
+    result = result.sort(function(a, b) {
+      var dateA = parseInt(store[a.ref].lastmod || store[a.ref].date || 0, 10);
+      var dateB = parseInt(store[b.ref].lastmod || store[b.ref].date || 0, 10);
+      if (dateA !== dateB) return dateB - dateA;
+      return (b.score || 0) - (a.score || 0);
+    });
     resultdiv.empty();
     resultdiv.prepend('<p class="results__found">'+result.length+' {{ site.data.ui-text[site.locale].results_found | default: "Result(s) found" }}</p>');
     for (var item in result) {
@@ -46,6 +54,7 @@ $(document).ready(function() {
         var searchitem =
           '<div class="list__item">'+
             '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<a class="archive__item-link" href="'+store[ref].url+'" rel="permalink"></a>'+
               '<h2 class="archive__item-title" itemprop="headline">'+
                 '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
               '</h2>'+
@@ -60,6 +69,7 @@ $(document).ready(function() {
     	  var searchitem =
           '<div class="list__item">'+
             '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<a class="archive__item-link" href="'+store[ref].url+'" rel="permalink"></a>'+
               '<h2 class="archive__item-title" itemprop="headline">'+
                 '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
               '</h2>'+

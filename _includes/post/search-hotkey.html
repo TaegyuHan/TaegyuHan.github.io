@@ -125,6 +125,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  cursor: pointer;
 }
 #custom-search-popup li:hover {
   border-color: #9198A1;
@@ -263,6 +264,12 @@ document.getElementById('custom-search-input').onkeyup = function() {
   var query = this.value.toLowerCase();
   if(typeof idx === 'undefined' || typeof store === 'undefined') return;
   var results = idx.search(query);
+  results = results.sort(function(a, b) {
+    var dateA = parseInt(store[a.ref].lastmod || store[a.ref].date || 0, 10);
+    var dateB = parseInt(store[b.ref].lastmod || store[b.ref].date || 0, 10);
+    if (dateA !== dateB) return dateB - dateA;
+    return (b.score || 0) - (a.score || 0);
+  });
   var list = document.getElementById('custom-search-results');
   list.innerHTML = '';
   results.slice(0,5).forEach(function(result) {
@@ -291,6 +298,11 @@ document.getElementById('custom-search-input').onkeyup = function() {
       (categoryBadges ? '<div><span class="search-category-label">카테고리:</span>'+categoryBadges+'</div>' : '') +
       (tagBadges ? '<div><span class="search-tag-label">태그:</span>'+tagBadges+'</div>' : '') +
       (item.excerpt ? '<div class="search-excerpt">'+item.excerpt+'</div>' : '');
+
+    li.addEventListener('click', function(e) {
+      if (e.target.closest('.search-category-badge, .search-tag-badge, .search-title')) return;
+      window.location.href = item.url;
+    });
     list.appendChild(li);
   });
 };
