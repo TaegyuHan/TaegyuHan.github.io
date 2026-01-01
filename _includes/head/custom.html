@@ -7,3 +7,13 @@
 
 <!-- end custom head snippets -->
 <script src="{{ '/assets/js/custom/mermaidPopup.js' | relative_url }}" defer></script>
+<style>
+	/* 모바일 탭 하이라이트 제거 (포스트 읽기 영역 포함) */
+	body,
+	a,
+	button,
+	.btn,
+	.page__content * {
+		-webkit-tap-highlight-color: transparent;
+	}
+</style>
