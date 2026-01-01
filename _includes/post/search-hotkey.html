@@ -33,37 +33,62 @@
   font-family: 'Segoe UI', 'Arial', sans-serif;
   transition: opacity 0.3s;
 }
+#custom-search-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 99998;
+  animation: backdrop-fade-in 0.25s;
+}
+@keyframes backdrop-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 #custom-search-popup {
   display: none;
   position: fixed;
-  top: 18%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background: #23262f;
-  color: #fff;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.22);
+  background: #0D1117;
+  color: #F0F6FC;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  border: 1px solid #30363d;
   z-index: 99999;
-  width: 900px;      /* 기본 가로 크기 */
-  max-width: 99vw;   /* 화면 최대 가로 비율 */
-  padding: 32px 28px 24px 28px;
-  border: 1.5px solid #2e3240;
+  width: 850px;
+  max-width: 95vw;
+  padding: 24px 32px;
+  border-radius: 4px;
   animation: popup-fade-in 0.25s;
-  max-height: 80vh;
+  max-height: 75vh;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #fff #23262f;
+  scrollbar-color: transparent transparent;
 }
 #custom-search-popup::-webkit-scrollbar {
-  width: 8px;
-  background: #23262f;
-  border-radius: 8px;
+  width: 6px;
+  background: transparent;
 }
 #custom-search-popup::-webkit-scrollbar-thumb {
-  background: #fff;
-  border-radius: 8px;
+  background: transparent;
+  border-radius: 3px;
+  transition: background-color 0.25s ease;
 }
 #custom-search-popup::-webkit-scrollbar-thumb:hover {
-  background: #e3e6ed;
+  background: #B4B9BF;
+}
+#custom-search-popup:hover {
+  scrollbar-color: #9198A1 #161B22;
+}
+#custom-search-popup:hover::-webkit-scrollbar {
+  background: #161B22;
+}
+#custom-search-popup:hover::-webkit-scrollbar-thumb {
+  background: #9198A1;
 }
 @keyframes popup-fade-in {
   from { opacity: 0; transform: translateX(-50%) scale(0.96); }
@@ -71,19 +96,19 @@
 }
 #custom-search-popup input {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: none;
+  padding: 10px 14px;
+  border-radius: 4px;
+  border: 1px solid #30363d;
   margin-bottom: 20px;
-  font-size: 1.08em;
-  background: #181a20;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  font-size: 1em;
+  background: #161B22;
+  color: #F0F6FC;
   outline: none;
-  transition: box-shadow 0.2s;
+  transition: border-color 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 #custom-search-popup input:focus {
-  box-shadow: none;
+  border-color: #9198A1;
 }
 #custom-search-popup ul {
   list-style: none;
@@ -91,95 +116,96 @@
   margin: 0;
 }
 #custom-search-popup li {
-  margin-bottom: 18px;
-  padding: 14px 12px;
-  border-radius: 10px;
-  background: #181a20;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  transition: background 0.2s;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  background: #161B22;
+  border: 1px solid #30363d;
+  transition: all 0.2s;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+}
+#custom-search-popup li:hover {
+  border-color: #9198A1;
+  box-shadow: 0 2px 8px rgba(145, 152, 161, 0.2);
 }
 #custom-search-popup .search-title {
-  color: #e3e6ed;
-  font-size: 1.12em;
+  color: #B4B9BF;
+  font-size: 1.1em;
   font-weight: 600;
-  margin-bottom: 2px;
   text-decoration: none;
+  line-height: 1.4;
 }
-#custom-search-popup .search-category-label {
-  font-size: 0.97em;
-  color: #bfc4d6;
-  font-weight: 500;
-  margin-right: 6px;
+#custom-search-popup .search-title:hover {
+  color: #F0F6FC;
+  text-decoration: underline;
 }
+#custom-search-popup .search-category-label,
 #custom-search-popup .search-tag-label {
-  font-size: 0.95em;
-  color: #bfc4d6;
-  font-weight: 500;
+  font-size: 0.85em;
+  color: #9198A1;
+  font-weight: 400;
   margin-right: 6px;
 }
-#custom-search-popup .search-category-badge {
-  color: #fff;
-  background: none;
-  border: 1.5px solid #fff;
-  border-radius: 12px;
-  display: inline-block;
-  padding: 3px 12px;
-  margin-right: 6px;
-  font-size: 0.97em;
-  font-weight: 500;
-  box-shadow: none;
-}
+#custom-search-popup .search-category-badge,
 #custom-search-popup .search-tag-badge {
-  color: #fff;
-  background: none;
-  border: 1.5px solid #fff;
-  border-radius: 12px;
+  color: #9198A1;
+  background: #161B22;
+  border: 1px solid #30363d;
+  border-radius: 3px;
   display: inline-block;
-  padding: 3px 12px;
+  padding: 2px 8px;
   margin-right: 6px;
-  font-size: 0.95em;
-  font-weight: 500;
-  box-shadow: none;
+  font-size: 0.8em;
+  font-weight: 400;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+#custom-search-popup .search-category-badge:hover,
+#custom-search-popup .search-tag-badge:hover {
+  background: #30363d;
+  color: #F0F6FC;
+  border-color: #9198A1;
 }
 #custom-search-popup .search-excerpt {
-  font-size: 0.97em;
-  color: #bfc4d6;
-  margin-top: 2px;
+  font-size: 0.9em;
+  color: #9198A1;
+  line-height: 1.6;
 }
 #custom-search-popup a {
-  color: #fff;
-  font-size: 1.08em;
-  font-weight: 500;
-  text-decoration: none;
   transition: color 0.2s;
-}
-#custom-search-popup a:hover {
-  color: #0076ff;
-  text-decoration: underline;
 }
 #custom-search-close {
   position: absolute;
-  top: 18px;
-  right: 22px;
-  background: #181a20;
-  border: none;
-  color: #fff;
-  font-size: 1.7em;
+  top: 16px;
+  right: 16px;
+  background: #161B22;
+  border: 1px solid #30363d;
+  color: #B4B9BF;
+  font-size: 1.15em;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 6px;
   width: 36px;
   height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  transition: background 0.2s;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 #custom-search-close:hover {
-  background: #23262f;
+  background: #1f242e;
+  color: #F0F6FC;
+  border-color: #9198A1;
+  transform: scale(1.04);
+}
+#custom-search-close:active {
+  transform: scale(0.98);
+}
+#custom-search-close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(145, 152, 161, 0.35);
 }
 @media (max-width: 1024px) {
   #custom-search-popup {
@@ -199,8 +225,14 @@
 }
 </style>
 
+<div id="custom-search-backdrop"></div>
 <div id="custom-search-popup">
-  <button id="custom-search-close">&times;</button>
+  <button id="custom-search-close" aria-label="닫기">
+    <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+      <line x1="3" y1="3" x2="11" y2="11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      <line x1="11" y1="3" x2="3" y2="11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+    </svg>
+  </button>
   <input type="search" id="custom-search-input" placeholder="검색어를 입력하세요">
   <ul id="custom-search-results"></ul>
 </div>
@@ -222,16 +254,32 @@ function showHotkeyInfo() {
 
 document.addEventListener('keydown', function(e) {
   if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'f') {
-    showHotkeyInfo();
-    var popup = document.getElementById('custom-search-popup');
-    popup.style.display = 'block';
-    document.getElementById('custom-search-input').focus();
     e.preventDefault();
+    var popup = document.getElementById('custom-search-popup');
+    var backdrop = document.getElementById('custom-search-backdrop');
+    
+    // 토글: 이미 열려있으면 닫고, 닫혀있으면 열기
+    if (popup.style.display === 'block') {
+      popup.style.display = 'none';
+      backdrop.style.display = 'none';
+      document.body.style.overflow = '';
+      document.getElementById('custom-search-results').innerHTML = '';
+      document.getElementById('custom-search-input').value = '';
+    } else {
+      showHotkeyInfo();
+      backdrop.style.display = 'block';
+      popup.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      document.getElementById('custom-search-input').focus();
+    }
   }
 });
 document.getElementById('custom-search-close').onclick = function() {
   var popup = document.getElementById('custom-search-popup');
+  var backdrop = document.getElementById('custom-search-backdrop');
   popup.style.display = 'none';
+  backdrop.style.display = 'none';
+  document.body.style.overflow = '';
   document.getElementById('custom-search-results').innerHTML = '';
   document.getElementById('custom-search-input').value = '';
 };
@@ -274,9 +322,22 @@ document.getElementById('custom-search-input').onkeyup = function() {
 window.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     var popup = document.getElementById('custom-search-popup');
+    var backdrop = document.getElementById('custom-search-backdrop');
     popup.style.display = 'none';
+    backdrop.style.display = 'none';
+    document.body.style.overflow = '';
     document.getElementById('custom-search-results').innerHTML = '';
     document.getElementById('custom-search-input').value = '';
   }
 });
+// 딤드 배경 클릭 시 팝업 닫기
+document.getElementById('custom-search-backdrop').onclick = function() {
+  var popup = document.getElementById('custom-search-popup');
+  var backdrop = document.getElementById('custom-search-backdrop');
+  popup.style.display = 'none';
+  backdrop.style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('custom-search-results').innerHTML = '';
+  document.getElementById('custom-search-input').value = '';
+};
 </script>
