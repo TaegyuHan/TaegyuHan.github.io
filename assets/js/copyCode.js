@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .copy-code-button {
       z-index: 10;
       position: absolute;
-      top: 8px;
+      top: 40px;
       right: 8px;
       padding: 6px 12px;
       background: #2d2d2d;
@@ -100,12 +100,80 @@ document.addEventListener('DOMContentLoaded', function () {
       white-space: pre;
       overflow-x: auto;
     }
+
+    .code-language-header {
+      background: #1e1e1e;
+      border-bottom: 1px solid #3d3d3d;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 400;
+      color: #7a7a7a;
+      letter-spacing: 0.5px;
+      text-align: right;
+      border-radius: 6px 6px 0 0;
+    }
+
+    .highlighter-rouge .highlight,
+    figure.highlight .highlight {
+      border-radius: 0 0 6px 6px;
+    }
   `;
   document.head.appendChild(style);
+
+  // 언어 정보 추출 함수
+  function getLanguage(codeBlock) {
+    const classes = codeBlock.className;
+    const match = classes.match(/language-([\w]+)/);
+    if (match && match[1]) {
+      const lang = match[1].toLowerCase();
+      // 언어명 표준화
+      const languageMap = {
+        'java': 'Java',
+        'sql': 'SQL',
+        'javascript': 'JavaScript',
+        'js': 'JavaScript',
+        'html': 'HTML',
+        'css': 'CSS',
+        'xml': 'XML',
+        'json': 'JSON',
+        'python': 'Python',
+        'bash': 'Bash',
+        'sh': 'Bash',
+        'ruby': 'Ruby',
+        'php': 'PHP',
+        'swift': 'Swift',
+        'kotlin': 'Kotlin',
+        'go': 'Go',
+        'rust': 'Rust',
+        'typescript': 'TypeScript',
+        'ts': 'TypeScript',
+        'vue': 'Vue',
+        'react': 'React',
+        'scss': 'SCSS',
+        'sass': 'SASS',
+        'less': 'LESS',
+        'yaml': 'YAML',
+        'yml': 'YAML',
+        'markdown': 'Markdown',
+        'md': 'Markdown'
+      };
+      return languageMap[lang] || lang.charAt(0).toUpperCase() + lang.slice(1);
+    }
+    return null;
+  }
 
   codeBlocks.forEach((codeBlock) => {
     let codeElem = codeBlock.querySelector('table.rouge-table .code pre') || codeBlock.querySelector('code');
     if (!codeElem) return;
+
+    // 언어 헤더 추가
+    const language = getLanguage(codeBlock);
+    if (language) {
+      const languageHeader = document.createElement('div');
+      languageHeader.className = 'code-language-header';
+      languageHeader.textContent = language;
+      codeBlock.insertBefore(languageHeader, codeBlock.firstChild);
+    }
 
     // 브라우저 하단 복사 알림 요소 생성 (한 번만)
     let globalNotice = document.querySelector('.global-copy-notice');
