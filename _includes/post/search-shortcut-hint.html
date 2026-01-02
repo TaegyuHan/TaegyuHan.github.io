@@ -69,6 +69,10 @@
         display: none;
     }
 
+    .search-hint-item--post-only {
+        display: none;
+    }
+
     @media (max-width: 1280px) {
         #search-hint-list {
             display: none;
@@ -87,6 +91,12 @@
         <span>목차 검색</span>
         <span class="shortcut-key">
             <kbd>Ctrl</kbd>+<kbd>Q</kbd>
+        </span>
+    </li>
+    <li class="search-hint-item search-hint-item--post-only" title="목록으로 돌아가기 (Ctrl+Alt+←)">
+        <span>카테고리로</span>
+        <span class="shortcut-key">
+            <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>←</kbd>
         </span>
     </li>
     <li class="search-hint-item" title="페이지 최상단/최하단 이동 (Home/End)">
@@ -126,12 +136,21 @@
 </ul>
 
 <script>
-// 홈 페이지에서만 페이지 이동 힌트 표시
+// 홈 페이지와 포스트 페이지에 따라 힌트 표시
 document.addEventListener('DOMContentLoaded', function() {
     const isHomePage = document.querySelector('.entries-list') || document.querySelector('.entries-grid');
+    const isPostPage = document.querySelector('article.page');
+    
     if (isHomePage) {
         const homeOnlyItems = document.querySelectorAll('.search-hint-item--home-only');
         homeOnlyItems.forEach(function(item) {
+            item.style.display = 'flex';
+        });
+    }
+    
+    if (isPostPage && !isHomePage) {
+        const postOnlyItems = document.querySelectorAll('.search-hint-item--post-only');
+        postOnlyItems.forEach(function(item) {
             item.style.display = 'flex';
         });
     }

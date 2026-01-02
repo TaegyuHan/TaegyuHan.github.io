@@ -1,0 +1,31 @@
+<script>
+// 카테고리 포스트 목록으로 이동
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('[Go To Category] Initializing category navigation');
+
+  // 카테고리 링크 찾기
+  function getCategoryUrl() {
+    // 페이지 메타에서 카테고리 링크 찾기
+    const categoryLinks = document.querySelectorAll('.page__taxonomy a[href*="/categories/"]');
+    if (categoryLinks.length > 0) {
+      return categoryLinks[0].href;
+    }
+    
+    // 카테고리가 없으면 홈 페이지로
+    return '/';
+  }
+
+  // 키보드 이벤트 처리
+  document.addEventListener('keydown', function(e) {
+    // Ctrl+Alt+← 조합
+    if (e.ctrlKey && e.altKey && e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const categoryUrl = getCategoryUrl();
+      console.log('[Go To Category] Navigating to:', categoryUrl);
+      window.location.href = categoryUrl;
+    }
+  });
+
+  console.log('[Go To Category] Category navigation initialized');
+});
+</script>
