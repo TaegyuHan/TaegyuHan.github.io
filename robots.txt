@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
 Sitemap: https://taegyuhan.github.io/sitemap.xml
+
+# Algolia-Crawler-Verif: 5AD09EE41A9CE488
