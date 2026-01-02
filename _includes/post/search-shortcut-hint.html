@@ -65,6 +65,10 @@
         line-height: 1.4;
     }
 
+    .search-hint-item--home-only {
+        display: none;
+    }
+
     @media (max-width: 1280px) {
         #search-hint-list {
             display: none;
@@ -96,5 +100,41 @@
             <kbd>End</kbd>
         </span>
     </li>
+    <li class="search-hint-item search-hint-item--home-only" title="포스트 선택 (↑/↓)">
+        <span>포스트 선택</span>
+        <span class="shortcut-key">
+            <kbd>↑</kbd><kbd>↓</kbd>
+        </span>
+        <span>·</span>
+        <span>열기</span>
+        <span class="shortcut-key">
+            <kbd>Enter</kbd>
+        </span>
+    </li>
+    <li class="search-hint-item search-hint-item--home-only" title="페이지 이동 (←/→)">
+        <span>페이지 이동</span>
+        <span>이전</span>
+        <span class="shortcut-key">
+            <kbd>←</kbd>
+        </span>
+        <span>·</span>
+        <span>다음</span>
+        <span class="shortcut-key">
+            <kbd>→</kbd>
+        </span>
+    </li>
 </ul>
+
+<script>
+// 홈 페이지에서만 페이지 이동 힌트 표시
+document.addEventListener('DOMContentLoaded', function() {
+    const isHomePage = document.querySelector('.entries-list') || document.querySelector('.entries-grid');
+    if (isHomePage) {
+        const homeOnlyItems = document.querySelectorAll('.search-hint-item--home-only');
+        homeOnlyItems.forEach(function(item) {
+            item.style.display = 'flex';
+        });
+    }
+});
+</script>
 
