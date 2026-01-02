@@ -48,7 +48,7 @@ textarea {
   *vertical-align: middle;
 }
 
-input,
+input:not(.DocSearch-Input),
 button,
 select,
 textarea {
@@ -73,7 +73,7 @@ label {
   }
 }
 
-input,
+input:not(.DocSearch-Input),
 textarea,
 select {
   display: inline-block;

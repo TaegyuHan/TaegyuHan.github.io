@@ -1,0 +1,46 @@
+<!-- DocSearch CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@4" />
+
+<style>
+    .DocSearch-Search-Icon {
+        margin-right: 12px;
+    }
+</style>
+<div id="docsearch-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@4"></script>
+<script>
+// DocSearch 초기화
+document.addEventListener('DOMContentLoaded', function() {
+  docsearch({
+    container: '#docsearch-container',
+    appId: '08WLBBX86S',
+    indexName: 'taegyuhan blog',
+    apiKey: 'f9e5cbb8f273baf007a24b11406493f2',
+    placeholder: '검색어를 입력하세요',
+  });
+
+  // search__toggle 버튼 클릭 시 DocSearch 열기
+  const searchToggle = document.querySelector('.search__toggle');
+  if (searchToggle) {
+    searchToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      const docSearchButton = document.querySelector('.DocSearch-Button');
+      if (docSearchButton) {
+        docSearchButton.click();
+      }
+    });
+  }
+});
+
+// Ctrl+Shift+F로 검색 열기
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'f') {
+    e.preventDefault();
+    const docSearchButton = document.querySelector('.DocSearch-Button');
+    if (docSearchButton) {
+      docSearchButton.click();
+    }
+  }
+});
+</script>
