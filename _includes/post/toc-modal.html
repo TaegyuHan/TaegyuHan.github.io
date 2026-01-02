@@ -1,0 +1,435 @@
+<style>
+  /**
+   * Table of Contents Modal Styles - Dark Theme
+   */
+  .toc-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(1, 4, 9, 0.85);
+    backdrop-filter: blur(3px);
+  }
+
+  .toc-modal--active {
+    display: flex !important;
+  }
+
+  .toc-modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .toc-modal__content {
+    position: relative;
+    background-color: #0D1117;
+    border: 1px solid rgba(145, 152, 161, 0.15);
+    border-radius: 6px;
+    max-width: 650px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 1.75em 2em;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    z-index: 100000;
+    font-family: "Roboto", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  }
+
+  .toc-modal__content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .toc-modal__content::-webkit-scrollbar-track {
+    background: rgba(145, 152, 161, 0.1);
+    border-radius: 4px;
+  }
+
+  .toc-modal__content::-webkit-scrollbar-thumb {
+    background: rgba(145, 152, 161, 0.3);
+    border-radius: 4px;
+  }
+
+  .toc-modal__content::-webkit-scrollbar-thumb:hover {
+    background: rgba(145, 152, 161, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .toc-modal__content {
+      max-width: 92vw;
+      max-height: 75vh;
+      padding: 1.5em 1.25em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .toc-modal__content {
+      max-width: 95vw;
+      max-height: 70vh;
+      padding: 1.25em 1em;
+    }
+  }
+
+  .toc-modal__close {
+    position: absolute;
+    top: 0.75em;
+    right: 0.75em;
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.125rem;
+    color: #9198A1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    z-index: 1;
+  }
+
+  .toc-modal__close:hover {
+    background-color: rgba(145, 152, 161, 0.15);
+    color: #C1C7CE;
+  }
+
+  .toc-modal__close:focus {
+    outline: 2px solid rgba(145, 152, 161, 0.5);
+    outline-offset: 2px;
+  }
+
+  .toc-modal__title {
+    margin: 0 0 1em 0;
+    padding-bottom: 0.75em;
+    border-bottom: 1px solid rgba(145, 152, 161, 0.15);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #F0F6FC;
+    font-family: "Roboto", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  .toc-modal__body {
+    color: #C9D1D9;
+    line-height: 1.6;
+  }
+
+  .toc-modal__body ul,
+  .toc-modal__body ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .toc-modal__body li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc-modal__body a {
+    display: block;
+    padding: 0.5em 0.875em;
+    color: #B5BDC6;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.15s ease-in-out;
+    font-size: 0.9375rem;
+    border-left: 2px solid transparent;
+  }
+
+  .toc-modal__body a:hover {
+    background-color: rgba(145, 152, 161, 0.1);
+    color: #F0F6FC;
+    border-left-color: #9198A1;
+  }
+
+  .toc-modal__body a:focus {
+    outline: 2px solid rgba(145, 152, 161, 0.4);
+    outline-offset: -2px;
+    background-color: rgba(145, 152, 161, 0.15);
+    color: #F0F6FC;
+    border-left-color: #F0F6FC;
+  }
+
+  .toc-modal__body ul ul,
+  .toc-modal__body ol ol {
+    margin-left: 1.5em;
+    margin-top: 0.25em;
+    padding-left: 0.5em;
+    border-left: 1px solid rgba(145, 152, 161, 0.15);
+  }
+
+  .toc-modal__body li {
+    margin: 0.125em 0;
+  }
+
+  /* 왼쪽 하단 키보드 조작 힌트 */
+  .toc-keyboard-hint {
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    z-index: 99999;
+    background: #0f1116;
+    color: #9ea7b3;
+    border: 1px solid #20252e;
+    border-radius: 12px;
+    padding: 9px 14px;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    display: none;
+    align-items: center;
+    gap: 12px;
+    font-family: "Roboto", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+    backdrop-filter: blur(6px);
+    white-space: nowrap;
+  }
+
+  .toc-keyboard-hint--show {
+    display: flex;
+  }
+
+  .toc-keyboard-hint__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #c4c9d4;
+  }
+
+  .toc-keyboard-hint__item:not(:last-child)::after {
+    content: '·';
+    margin-left: 6px;
+    color: #7f8794;
+  }
+
+  .toc-keyboard-hint kbd {
+    background: #1b1f2a;
+    border: 1px solid #2a3040;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-family: monospace;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    color: #c4c9d4;
+  }
+
+  @media (max-width: 1280px) {
+    .toc-keyboard-hint {
+      display: none !important;
+    }
+  }
+
+  /* 단축키 힌트 */
+  .toc-modal-hint {
+    position: fixed;
+    bottom: 1.5em;
+    right: 1.5em;
+    padding: 0.625em 0.875em;
+    background-color: rgba(13, 17, 23, 0.95);
+    border: 1px solid rgba(145, 152, 161, 0.2);
+    color: #B5BDC6;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 99998;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .toc-modal-hint strong {
+    color: #F0F6FC;
+    font-weight: 600;
+  }
+
+  .toc-modal-hint--show {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .toc-modal-hint {
+      display: none;
+    }
+  }
+</style>
+
+<!-- ToC Modal HTML -->
+<div id="toc-modal" class="toc-modal">
+  <div class="toc-modal__overlay"></div>
+  <div class="toc-modal__content">
+    <button class="toc-modal__close" aria-label="Close modal">
+      <i class="fas fa-times"></i>
+    </button>
+    <h2 class="toc-modal__title">목차</h2>
+    <nav class="toc-modal__body" id="toc-modal-content">
+      <!-- ToC will be cloned here -->
+    </nav>
+  </div>
+</div>
+
+<!-- 키보드 조작 힌트 -->
+<div class="toc-keyboard-hint" id="toc-keyboard-hint">
+  <div class="toc-keyboard-hint__item">
+    <kbd>↑</kbd><kbd>↓</kbd> <span>목차 이동</span>
+  </div>
+  <div class="toc-keyboard-hint__item">
+    <kbd>Enter</kbd> <span>선택</span>
+  </div>
+  <div class="toc-keyboard-hint__item">
+    <kbd>ESC</kbd> <span>닫기</span>
+  </div>
+</div>
+
+<script>
+// ToC Modal 초기화
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('[ToC Modal] DOMContentLoaded fired');
+  
+  const modal = document.getElementById('toc-modal');
+  const modalBody = document.getElementById('toc-modal-content');
+  const hint = document.getElementById('toc-modal-hint');
+  const keyboardHint = document.getElementById('toc-keyboard-hint');
+  let currentFocusIndex = 0;
+  let tocLinks = [];
+  
+  console.log('[ToC Modal] Elements - modal:', !!modal, 'modalBody:', !!modalBody);
+  
+  if (!modal) {
+    console.log('[ToC Modal] Modal element not found!');
+    return;
+  }
+  
+  // ToC 내용 복사
+  const tocNav = document.querySelector('nav.toc');
+  console.log('[ToC Modal] tocNav found:', !!tocNav);
+  
+  if (tocNav && modalBody) {
+    const clonedContent = tocNav.cloneNode(true);
+    modalBody.innerHTML = '';
+    const menuContent = clonedContent.querySelector('.toc__menu') || clonedContent;
+    if (menuContent) {
+      modalBody.appendChild(menuContent);
+    }
+    
+    // 모든 링크 수집
+    updateTocLinks();
+    
+    // 링크 클릭 시 모달 닫기
+    modalBody.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        setTimeout(closeModal, 100);
+      });
+    });
+  }
+  
+  function updateTocLinks() {
+    tocLinks = Array.from(modalBody.querySelectorAll('a'));
+    currentFocusIndex = 0;
+  }
+  
+  function focusLink(index) {
+    if (tocLinks.length === 0) return;
+    
+    // 인덱스 범위 제한
+    if (index < 0) index = 0;
+    if (index >= tocLinks.length) index = tocLinks.length - 1;
+    
+    currentFocusIndex = index;
+    tocLinks[currentFocusIndex].focus();
+  }
+  
+  // 닫기 버튼
+  const closeBtn = modal.querySelector('.toc-modal__close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+  
+  // 오버레이 클릭
+  const overlay = modal.querySelector('.toc-modal__overlay');
+  if (overlay) {
+    overlay.addEventListener('click', closeModal);
+  }
+  
+  // 힌트 표시
+  if (hint) {
+    hint.classList.add('toc-modal-hint--show');
+  }
+  
+  console.log('[ToC Modal] Initialization complete');
+  
+  function openModal() {
+    console.log('[ToC Modal] Opening modal');
+    modal.classList.add('toc-modal--active');
+    document.body.style.overflow = 'hidden';
+    if (hint) hint.classList.remove('toc-modal-hint--show');
+    if (keyboardHint) keyboardHint.classList.add('toc-keyboard-hint--show');
+    
+    // 모달이 열리면 첫 번째 링크에 포커스
+    setTimeout(function() {
+      if (tocLinks.length > 0) {
+        currentFocusIndex = 0;
+        tocLinks[0].focus();
+      }
+    }, 100);
+  }
+  
+  function closeModal() {
+    console.log('[ToC Modal] Closing modal');
+    modal.classList.remove('toc-modal--active');
+    document.body.style.overflow = '';
+    if (hint) hint.classList.add('toc-modal-hint--show');
+    if (keyboardHint) keyboardHint.classList.remove('toc-keyboard-hint--show');
+  }
+  
+  // 키보드 이벤트 처리
+  document.addEventListener('keydown', function(e) {
+    const isModalActive = modal.classList.contains('toc-modal--active');
+    
+    // ESC 키로 닫기
+    if (e.key === 'Escape' && isModalActive) {
+      closeModal();
+      return;
+    }
+    
+    // Ctrl+. 로 목차 모달 열기/닫기
+    if (e.ctrlKey && (e.key === 'q' || e.key === 'Q')) {
+      console.log('[ToC Modal] Ctrl+Q pressed!');
+      e.preventDefault();
+      if (isModalActive) {
+        closeModal();
+      } else {
+        openModal();
+      }
+      return;
+    }
+    
+    // 모달이 열려있을 때만 방향키 처리
+    if (!isModalActive) return;
+    
+    // 방향키 위/아래
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      focusLink(currentFocusIndex + 1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      focusLink(currentFocusIndex - 1);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      // 현재 포커스된 링크 클릭
+      if (tocLinks[currentFocusIndex]) {
+        tocLinks[currentFocusIndex].click();
+      }
+    }
+  });
+});
+</script>

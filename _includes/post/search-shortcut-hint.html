@@ -15,7 +15,7 @@
         border: 1px solid #20252e;
         border-radius: 12px;
         padding: 9px 14px;
-        font-size: 10px;
+        font-size: 12px;
         cursor: default;
         pointer-events: none;
         box-shadow: 0 2px 8px rgba(0,0,0,0.18);
@@ -24,14 +24,14 @@
         gap: 8px;
         flex-wrap: nowrap;
         transition: all 0.2s ease;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-family: "Roboto", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
         backdrop-filter: blur(6px);
         text-align: left;
         white-space: nowrap;
     }
 
     .search-hint-item span {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .search-hint-item:hover {
@@ -54,13 +54,13 @@
         border: 1px solid #2a3040;
         border-radius: 3px;
         padding: 2px 6px;
-        font-size: 10px;
+        font-size: 11px;
         font-family: monospace;
         box-shadow: 0 1px 2px rgba(0,0,0,0.12);
     }
 
     .search-hint-item .hint-note {
-        font-size: 11px;
+        font-size: 12px;
         color: #7f8794;
         line-height: 1.4;
     }
@@ -77,6 +77,12 @@
         <span>전체 검색</span>
         <span class="shortcut-key">
             <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd>
+        </span>
+    </li>
+    <li class="search-hint-item" title="목차 검색 (Ctrl+Q)">
+        <span>목차 검색</span>
+        <span class="shortcut-key">
+            <kbd>Ctrl</kbd>+<kbd>Q</kbd>
         </span>
     </li>
     <li class="search-hint-item" title="목차 항목 클릭 시 해당 섹션으로 이동">
