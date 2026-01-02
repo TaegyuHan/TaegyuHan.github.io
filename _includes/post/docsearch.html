@@ -2,9 +2,63 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@4" />
 
 <style>
-    .DocSearch-Search-Icon {
-        margin-right: 12px;
-    }
+#docsearch-container {
+  display: none !important;
+}
+
+/* DocSearch 다크모드 커스텀 */
+:root {
+  --docsearch-sidepanel-text-base: var(--docsearch-text-color);
+  --docsearch-sidepanel-primary-disabled: #012dba99;
+  --docsearch-text-color: #c4c7dc;
+  --docsearch-secondary-text-color: #b6b7d5;
+  --docsearch-subtle-color: #212139;
+  --docsearch-success-color: #43a04733;
+  --docsearch-highlight-color: #457aff;
+  --docsearch-focus-color: #9ac8ff;
+  --docsearch-background-color: #36395a;
+  --docsearch-icon-color: #b6b7d5;
+  --docsearch-container-background: #090a11cc;
+  --docsearch-modal-background: #15172a;
+  --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40, 0 3px 8px 0 #000309;
+  --docsearch-searchbox-background: #000000a6;
+  --docsearch-searchbox-focus-background: #000000a6;
+  --docsearch-hit-color: #bec3c9;
+  --docsearch-hit-shadow: none;
+  --docsearch-hit-background: #090a11;
+  --docsearch-key-background: #36395a;
+  --docsearch-key-color: #b6b7d5;
+  --docsearch-key-pressed-shadow: inset 0 2px 4px #0c0d1466;
+  --docsearch-footer-background: #000000a6;
+  --docsearch-footer-shadow: inset 0 1px 0 0 #494c6a80, 0 -4px 8px 0 #0003;
+  --docsearch-logo-color: #fff;
+  --docsearch-muted-color: #7f8497;
+  --docsearch-search-button-background: var(--docsearch-modal-background);
+  --docsearch-search-button-text-color: var(--docsearch-text-color);
+}
+
+.DocSearch-Search-Icon {
+  margin-right: 12px;
+}
+
+.DocSearch-Input, .DocSearch-Modal-heading {
+    appearance: none;
+    color: var(--docsearch-text-color);
+    height: 100%;
+    overflow-y: hidden;
+    padding-block-start: 4px;
+    padding-inline-start: 8px;
+    resize: none;
+    width: 80%;
+    background: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    flex: 1 1 0%;
+    font: inherit inherit inherit inherit inherit inherit inherit inherit inherit inherit inherit inherit inherit inherit inherit inherit;
+    outline: 0px;
+}
 </style>
 
 <div id="docsearch-container"></div>
