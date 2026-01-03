@@ -1,4 +1,3 @@
-````chatagent
 ---
 name: 'REFERENCE-AG'
 description: '기술 명령어, 단축키, 라이브러리 사용법을 정리하는 레퍼런스 에이전트'
