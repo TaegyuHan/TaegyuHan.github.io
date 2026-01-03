@@ -4,11 +4,11 @@ title: "[Reference] Docker 명령어 및 사용법 정리"
 tagline: "Docker의 필수 명령어와 옵션을 한눈에 확인하세요"
 
 header:
-  overlay_image: /assets/post/tutorial/2026-01-03-docker-reference/overlay.png
+  overlay_image: /assets/post/reference/2026-01-03-docker-reference/overlay.png
   overlay_filter: 0.5
 
 categories:
-  - tutorial
+  - reference
 
 tags:
   - Docker
