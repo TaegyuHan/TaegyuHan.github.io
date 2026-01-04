@@ -8,7 +8,7 @@ header:
   overlay_filter: 0.5
 
 categories:
-  - reference
+  - Reference
 
 tags:
   - Git

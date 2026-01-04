@@ -8,7 +8,7 @@ header:
   overlay_filter: 0.5
 
 categories:
-  - reference
+  - Reference
 
 tags:
   - Docker
@@ -22,7 +22,7 @@ toc: true
 show_date: true
 mermaid: true
 
-last_modified_at: 2026-01-03T17:00:00+09:00
+last_modified_at: 2026-01-03T17:00:00
 ---
 
 Docker는 애플리케이션을 컨테이너로 패키징하여 어디서나 일관되게 실행할 수 있도록 하는 플랫폼입니다. 이 문서는 Docker의 필수 명령어를 빠르게 찾아보고 실무에 바로 적용할 수 있도록 정리했습니다.
