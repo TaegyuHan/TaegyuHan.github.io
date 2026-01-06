@@ -8,7 +8,7 @@ header:
   overlay_filter: 0.5
 
 categories:
-  - java
+  - Java
 
 tags:
   - 팩토리메소드

@@ -8,11 +8,11 @@ header:
   overlay_filter: 0.5
   
 categories:
-  - template
+  - Template
 
 tags:
     - post
-    - template
+    - Template
     - markdown
 
 toc: true

@@ -8,7 +8,7 @@ header:
   overlay_filter: 0.5
 
 categories:
-  - google
+  - Google
 
 tags:
   - Google Calendar

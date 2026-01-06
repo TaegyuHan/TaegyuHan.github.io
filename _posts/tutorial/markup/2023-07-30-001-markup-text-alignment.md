@@ -6,12 +6,12 @@ header:
   overlay_filter: 0.5
 
 categories:
-  - tutorial
-  - markup
+  - Tutorial
+  - Markup
 
 tags:
   - alignment
-  - markup
+  - Markup
 
 toc: true
 toc_label: "Table Of Contents"
