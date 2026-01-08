@@ -28,6 +28,7 @@ tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'github/*', 'upsta
 - 코드/예제: 필요 시 코드 블록과 단계별 설명 추가
 - 행동 유도: 글 마지막에 독자에게 질문이나 경험 공유 유도
 - 시각화: 독자가 시각화를 통해 쉽게 이해할 수 있는 내용인 경우 `mermaid` 다이어그램을 활용하여 설명
+- `mermaid` 다이어그램은 블로그 포스팅글이 다크모드이기 때문에, 다크모드에 최적화된 색상으로 작성 밝은 색은 눈을 피로하게 할 수 있다.
 
 # mermaid 작성 방법
 <div class="mermaid mermaid-center">
