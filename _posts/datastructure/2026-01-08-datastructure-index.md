@@ -29,7 +29,7 @@ last_modified_at: 2026-01-08T22:30:00+09:00
 
 | 자료구조 이름 | 설명 |
 |--------------|-----|
-| 배열 (Array) | 고정 길이 연속 메모리 블록. 인덱스로 O(1) 접근. |
+| [배열 (Array)](/post/datastructure/array) | 고정 길이 연속 메모리 블록. 인덱스로 O(1) 접근. |
 | 동적 배열 (Dynamic Array) | 가변 길이 배열. 용량 초과 시 리사이즈. |
 
 ### 연결 자료구조 (Linked Data Structures)
