@@ -191,6 +191,7 @@ exclude:
   - tmp
   - /docs # ignore Minimal Mistakes /docs
   - /test # ignore Minimal Mistakes /test
+  - example # exclude custom plugin example files
 keep_files:
   - .git
   - .svn
