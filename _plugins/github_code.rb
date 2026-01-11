@@ -57,13 +57,13 @@ module Jekyll
 
       out = +''
       # Wrap in Rouge container so footer can sit bottom-right inside the box
-      out << %Q(<div class="#{language_class} highlighter-rouge github-code-wrap" data-github-url="#{escape_attr(github_url)}" data-github-source="#{escape_attr(source_text)}" style="position:relative;">)
+      out << %Q(<div class="#{language_class} highlighter-rouge github-code-wrap" data-github-url="#{escape_attr(github_url)}" data-github-source="#{escape_attr(source_text)}">)
       # Rouge highlight markup with escaped code
       out << %Q(<div class="highlight"><pre class="highlight"><code class="#{language_class}" data-lang="#{html_escape(lang_hint)}">#{html_escape(slice)}</code></pre></div>)
       # Bottom-right footer link
       if github_url && short_sha
         link_label = "#{file_name}@#{short_sha}"
-        out << %Q(<div class="github-code-footer" style="position:absolute;right:.5rem;bottom:.4rem;opacity:.85;font-size:.85em;">)
+          out << %Q(<div class="github-code-footer">)
         out << %Q(<a class="github-code-link" href="#{escape_attr(github_url)}" target="_blank" rel="noopener">#{html_escape(link_label)}</a>)
         out << %Q(</div>)
       end

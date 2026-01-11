@@ -3,19 +3,32 @@
   position: relative;
 }
 
+/* Footer as a dedicated bottom bar (no overlay) */
 .github-code-footer {
-  position: absolute;
-  right: .5rem;
-  bottom: .4rem;
-  opacity: .85;
-  font-size: .85em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  background: #1e1e1e;
+  border-top: 1px solid #3d3d3d;
+  padding: 6px 12px;
+  font-size: 0.85em;
+  color: #7a7a7a;
+  border-radius: 0 0 6px 6px;
 }
 
 .github-code-link {
   font-weight: 600;
   text-decoration: none;
+  color: #7a7a7a; /* Match code-language-header text color */
 }
 
 .github-code-link:hover {
   text-decoration: underline;
+  color: #7a7a7a; /* keep same color on hover for consistency */
+}
+
+/* Ensure visited links don't change color */
+.github-code-link:visited {
+  color: #7a7a7a;
 }
