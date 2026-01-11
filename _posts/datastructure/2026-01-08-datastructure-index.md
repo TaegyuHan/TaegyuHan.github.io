@@ -105,3 +105,5 @@ last_modified_at: 2026-01-08T22:30:00+09:00
 | 트라이 (Trie) | 문자열 접두사 검색에 최적화된 트리. |
 | 유니온-파인드 (Disjoint Set) | 집합 합치기/찾기 연산을 거의 O(1)에 처리. |
 | 블룸 필터 (Bloom Filter) | 확률적 집합 판단. 오탐 가능, 누락 없음. |
+
+{% github_code https://github.com/TaegyuHan/taecobug-algorithms/blob/ce8e6c419e85f4d5bde5d96dfb709b4dd20cc552/.github/agents/ALGORITHMS.md 5-13 %}
