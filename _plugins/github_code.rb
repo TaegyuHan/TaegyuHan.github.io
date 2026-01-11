@@ -52,17 +52,22 @@ module Jekyll
         source_text = "#{file_name}@#{short_sha} (L#{@start_line}-L#{@end_line})"
       end
 
-      fence = '```'
-      fence = '~~~~' if slice.include?('```')
-      lang_hint = lang.empty? ? '' : lang
+      lang_hint = lang.empty? ? 'plaintext' : lang
+      language_class = "language-#{lang_hint}"
 
       out = +''
-      if github_url && source_text
-        out << %Q(<div class="github-code-meta" data-github-source="#{escape_attr(source_text)}" data-github-url="#{escape_attr(github_url)}"></div>\n)
+      # Wrap in Rouge container so footer can sit bottom-right inside the box
+      out << %Q(<div class="#{language_class} highlighter-rouge github-code-wrap" data-github-url="#{escape_attr(github_url)}" data-github-source="#{escape_attr(source_text)}" style="position:relative;">)
+      # Rouge highlight markup with escaped code
+      out << %Q(<div class="highlight"><pre class="highlight"><code class="#{language_class}" data-lang="#{html_escape(lang_hint)}">#{html_escape(slice)}</code></pre></div>)
+      # Bottom-right footer link
+      if github_url && short_sha
+        link_label = "#{file_name}@#{short_sha}"
+        out << %Q(<div class="github-code-footer" style="position:absolute;right:.5rem;bottom:.4rem;opacity:.85;font-size:.85em;">)
+        out << %Q(<a class="github-code-link" href="#{escape_attr(github_url)}" target="_blank" rel="noopener">#{html_escape(link_label)}</a>)
+        out << %Q(</div>)
       end
-      out << fence << lang_hint << "\n"
-      out << slice
-      out << "\n" << fence << "\n"
+      out << %Q(</div>)
       out
     rescue => e
       error_div(e.message)

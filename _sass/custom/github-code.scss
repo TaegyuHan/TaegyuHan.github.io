@@ -1,0 +1,21 @@
+// Styles for GitHub code footer inside Rouge highlighter
+.github-code-wrap {
+  position: relative;
+}
+
+.github-code-footer {
+  position: absolute;
+  right: .5rem;
+  bottom: .4rem;
+  opacity: .85;
+  font-size: .85em;
+}
+
+.github-code-link {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.github-code-link:hover {
+  text-decoration: underline;
+}
