@@ -139,7 +139,7 @@
         const btn = document.createElement('button');
         btn.className = 'param-affected-item';
         btn.type = 'button';
-        btn.innerHTML = `<code style="font-size: 0.85em;">${block.caption}</code>`;
+        btn.innerHTML = `<code style="font-size: 0.85em; color: inherit; background: none;">${block.caption}</code>`;
         btn.setAttribute('tabindex', '0');
         btn.style.cssText = 'display: block; width: 100%; text-align: left; padding: 8px 12px; margin: 0; background: rgba(255, 255, 255, 0.03); border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; cursor: pointer; transition: all 0.2s ease; font-size: 0.85em;';
 
