@@ -23,4 +23,11 @@
   <p style="color: #9e9e9f; font-size: 0.85em; margin: 0; line-height: 1.6;">
     위 값을 수정하면 아래 코드 블록의 <code style="background: rgba(0, 0, 0, 0.3); padding: 0.2em 0.4em; border-radius: 3px; color: #7fa8d4; font-family: monospace; font-size: 0.9em; display: inline-block; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom;">{{ pdefault }}</code> 부분이 자동으로 변경됩니다.
   </p>
+
+  <div style="margin-top: 1em; display: flex; align-items: center; gap: 0.75em; flex-wrap: wrap;">
+    <span class="param-replacer-count" data-key="{{ pkey }}" style="color: #cbd5e1; font-size: 0.85em;">연동 코드: 계산 중...</span>
+    <button type="button" class="param-replacer-toggle" data-key="{{ pkey }}" style="padding: 0.35em 0.75em; background: rgba(91, 127, 199, 0.2); border: 1px solid rgba(91, 127, 199, 0.5); color: #d5d5d6; border-radius: 4px; font-size: 0.8em; cursor: pointer;">코드 목록 보기</button>
+  </div>
+  <ul class="param-replacer-list" data-key="{{ pkey }}" style="margin: 0.5em 0 0 0; padding-left: 1em; display: none; color: #cbd5e1; font-size: 0.85em;">
+  </ul>
 </div>

@@ -73,6 +73,10 @@
         display: none;
     }
 
+    .search-hint-item--param-only {
+        display: none;
+    }
+
     @media (max-width: 1280px) {
         #search-hint-list {
             display: none;
@@ -81,16 +85,22 @@
 </style>
 
 <ul id="search-hint-list" aria-label="검색 및 목차 단축키 안내">
+    <li class="search-hint-item" title="목차 리스트 (Ctrl+Q)">
+        <span>목차 리스트</span>
+        <span class="shortcut-key">
+            <kbd>Ctrl</kbd>+<kbd>Q</kbd>
+        </span>
+    </li>
+    <li class="search-hint-item search-hint-item--param-only" title="파라미터 설정 리스트 (Ctrl+Shift+E)">
+        <span>파라미터 설정 리스트</span>
+        <span class="shortcut-key">
+            <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>
+        </span>
+    </li>
     <li class="search-hint-item" title="전체 포스트 검색 (Ctrl+Shift+F)">
         <span>전체 검색</span>
         <span class="shortcut-key">
             <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd>
-        </span>
-    </li>
-    <li class="search-hint-item" title="목차 검색 (Ctrl+Q)">
-        <span>목차 검색</span>
-        <span class="shortcut-key">
-            <kbd>Ctrl</kbd>+<kbd>Q</kbd>
         </span>
     </li>
     <li class="search-hint-item search-hint-item--post-only" title="목록으로 돌아가기 (Ctrl+Alt+←)">
@@ -140,6 +150,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const isHomePage = document.querySelector('.entries-list') || document.querySelector('.entries-grid');
     const isPostPage = document.querySelector('article.page');
+    const hasParams = document.querySelector('.param-replacer-container');
     
     if (isHomePage) {
         const homeOnlyItems = document.querySelectorAll('.search-hint-item--home-only');
@@ -151,6 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isPostPage && !isHomePage) {
         const postOnlyItems = document.querySelectorAll('.search-hint-item--post-only');
         postOnlyItems.forEach(function(item) {
+            item.style.display = 'flex';
+        });
+    }
+
+    if (hasParams) {
+        const paramOnlyItems = document.querySelectorAll('.search-hint-item--param-only');
+        paramOnlyItems.forEach(function(item) {
             item.style.display = 'flex';
         });
     }

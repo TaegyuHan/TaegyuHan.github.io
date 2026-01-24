@@ -32,3 +32,22 @@
 .github-code-link:visited {
   color: #7a7a7a;
 }
+
+/* Caption footer on code blocks that declare data-code-box-caption */
+.page__content .highlighter-rouge[data-code-box-caption],
+.page__content figure.highlight[data-code-box-caption] {
+  position: relative;
+}
+
+.page__content .highlighter-rouge[data-code-box-caption]::after,
+.page__content figure.highlight[data-code-box-caption]::after {
+  content: attr(data-code-box-caption);
+  display: block;
+  text-align: right;
+  font-size: 0.8em;
+  color: #9aa8c7;
+  margin-top: 6px;
+  padding: 4px 10px 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.01em;
+}
