@@ -1,0 +1,26 @@
+{% assign pkey = include.key | default: 'job' %}
+{% assign pdefault = include.default | default: 'spring-app' %}
+{% assign pid = include.id | default: pkey | append: '-' | append: pdefault | slugify %}
+
+<div class="param-replacer-container" style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #5b7fc7; padding: 1.5em; margin-bottom: 1.5em; border-radius: 4px;">
+  <div style="margin-bottom: 0.8em;">
+    <label for="param-input-{{ pid }}" style="display: block; font-weight: 500; margin-bottom: 0.5em; color: #d5d5d6; font-size: 0.9em;">
+      파라미터 설정: <code style="background: rgba(0, 0, 0, 0.3); padding: 0.2em 0.5em; border-radius: 3px; color: #89ddff; font-family: monospace;">{{ pkey }}</code>
+    </label>
+    <input 
+      type="text" 
+      class="param-replacer-input"
+      id="param-input-{{ pid }}" 
+      data-key="{{ pkey }}"
+      data-default="{{ pdefault }}"
+      placeholder="{{ pdefault }}"
+      value="{{ pdefault }}"
+      style="width: 100%; max-width: 500px; padding: 0.6em 0.8em; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 3px; background: rgba(0, 0, 0, 0.3); color: #d5d5d6; font-size: 0.9em; font-family: 'Monaco', 'Consolas', 'Courier New', monospace; transition: all 0.2s ease; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"
+      onfocus="this.style.borderColor='#5b7fc7'; this.style.background='rgba(0, 0, 0, 0.4)';"
+      onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.background='rgba(0, 0, 0, 0.3)';"
+    />
+  </div>
+  <p style="color: #9e9e9f; font-size: 0.85em; margin: 0; line-height: 1.6;">
+    위 값을 수정하면 아래 코드 블록의 <code style="background: rgba(0, 0, 0, 0.3); padding: 0.2em 0.4em; border-radius: 3px; color: #7fa8d4; font-family: monospace; font-size: 0.9em; display: inline-block; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom;">{{ pdefault }}</code> 부분이 자동으로 변경됩니다.
+  </p>
+</div>

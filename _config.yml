@@ -305,3 +305,7 @@ defaults:
 
 # codepen 설정 (자신의 codepen id)
 codepen_username: aaymiunc-the-sans
+
+# Footer scripts
+after_footer_scripts:
+  - /assets/js/custom/param-replacer.js
