@@ -8,6 +8,22 @@
       return;
     }
 
+    // 전역으로 원본 텍스트 저장 (모든 input에서 공유)
+    const codeBlocks = document.querySelectorAll('.page__content div.highlighter-rouge, .page__content figure.highlight');
+    const originalTexts = new Map();
+
+    function getCodeElem(block) {
+      // Rouge 테이블 구조 우선, 없으면 일반 code 요소
+      return block.querySelector('table.rouge-table .code pre') || block.querySelector('code') || block.querySelector('pre');
+    }
+
+    codeBlocks.forEach((block) => {
+      const codeElem = getCodeElem(block);
+      if (codeElem) {
+        originalTexts.set(codeElem, codeElem.textContent);
+      }
+    });
+
     inputs.forEach((input) => {
       // 원본 코드 블록 저장 (각 param-replacer-container마다)
       const container = input.closest('.param-replacer-container');
@@ -16,29 +32,32 @@
       }
 
       const key = input.dataset.key;
-      const codeBlocks = container.parentElement.querySelectorAll('.highlighter-rouge');
-      const originalTexts = new Map();
-
-      codeBlocks.forEach((block) => {
-        originalTexts.set(block, block.textContent);
-      });
 
       // input 변경 시 처리
       input.addEventListener('change', function() {
         const value = this.value;
-        const targets = this.dataset.targets ? this.dataset.targets.split(',').map(s => s.trim()) : [];
+        const targets = this.dataset.targets ? this.dataset.targets.split(',').map(s => s.trim()) : (this.dataset.default ? [this.dataset.default] : []);
 
-        // 코드 블록 업데이트
+        // 코드 블록 텍스트만 업데이트 (구조 보존)
         codeBlocks.forEach((block) => {
-          let text = originalTexts.get(block);
-          
+          const codeElem = getCodeElem(block);
+          if (!codeElem) return;
+          let text = originalTexts.get(codeElem);
+          if (typeof text !== 'string') return;
+
           targets.forEach((target) => {
             const regex = new RegExp(escapeRegex(target), 'g');
             text = text.replace(regex, value);
           });
 
-          block.textContent = text;
+          codeElem.textContent = text;
         });
+
+        // 프리뷰 텍스트 업데이트
+        const preview = container.querySelector('.param-default-value');
+        if (preview) {
+          preview.textContent = value;
+        }
 
         // 영향받는 코드 블록 목록 업데이트
         updateAffectedList(container, key, targets, value);
@@ -46,8 +65,29 @@
 
       input.addEventListener('input', function() {
         const value = this.value;
-        const targets = this.dataset.targets ? this.dataset.targets.split(',').map(s => s.trim()) : [];
-        updateAffectedList(container, key, targets, value);
+        const targets = this.dataset.targets ? this.dataset.targets.split(',').map(s => s.trim()) : (this.dataset.default ? [this.dataset.default] : []);
+        // 코드 블록 텍스트만 업데이트 (항상 원본 기준으로 교체)
+        codeBlocks.forEach((block) => {
+          const codeElem = getCodeElem(block);
+          if (!codeElem) return;
+          let text = originalTexts.get(codeElem);
+          if (typeof text !== 'string') return;
+
+          targets.forEach((target) => {
+            const regex = new RegExp(escapeRegex(target), 'g');
+            text = text.replace(regex, value);
+          });
+
+          codeElem.textContent = text;
+        });
+        // 프리뷰 텍스트 업데이트
+        const preview = container.querySelector('.param-default-value');
+        if (preview) {
+          preview.textContent = value || this.dataset.default;
+        }
+        // 영향받는 코드 목록은 default 값 기준으로 유지
+        const searchTargets = this.dataset.default ? [this.dataset.default] : targets;
+        updateAffectedList(container, key, searchTargets, value);
       });
     });
 
@@ -56,18 +96,19 @@
     }
 
     function updateAffectedList(container, key, targets, value) {
-      const list = container.querySelector('.param-affected-list');
+      const list = container.querySelector('.param-replacer-list');
       if (!list) {
         return;
       }
 
-      const codeBlocks = container.parentElement.querySelectorAll('.page__content pre code');
       const affectedBlocks = [];
-      const codeBlocksInParent = container.parentElement.querySelectorAll('.highlighter-rouge');
+      const codeBlocksInParent = document.querySelectorAll('.page__content div.highlighter-rouge, .page__content figure.highlight');
 
       codeBlocksInParent.forEach((block, index) => {
         let isAffected = false;
-        const blockText = block.textContent;
+        const codeElem = block.querySelector('table.rouge-table .code pre') || block.querySelector('code') || block.querySelector('pre');
+        // 원본 텍스트 기준으로 검색 (변경된 텍스트가 아닌 원본에서 찾기)
+        const blockText = codeElem && originalTexts.has(codeElem) ? originalTexts.get(codeElem) : (codeElem ? codeElem.textContent : '');
 
         targets.forEach((target) => {
           if (blockText.includes(target)) {
@@ -86,32 +127,55 @@
 
       // 목록 업데이트
       list.innerHTML = '';
-      const count = container.querySelector('.param-count');
+      const count = container.querySelector('.param-replacer-count');
       if (count) {
-        count.textContent = affectedBlocks.length;
+        count.textContent = '연동 코드: ' + affectedBlocks.length + '개';
       }
 
       affectedBlocks.forEach((block) => {
-        const li = document.createElement('button');
-        li.className = 'param-affected-item';
-        li.type = 'button';
-        li.innerHTML = `<code>${block.caption}</code>`;
-        li.setAttribute('tabindex', '0');
+        const li = document.createElement('li');
+        li.style.cssText = 'margin: 0; padding: 0;';
+        
+        const btn = document.createElement('button');
+        btn.className = 'param-affected-item';
+        btn.type = 'button';
+        btn.innerHTML = `<code style="font-size: 0.85em;">${block.caption}</code>`;
+        btn.setAttribute('tabindex', '0');
+        btn.style.cssText = 'display: block; width: 100%; text-align: left; padding: 8px 12px; margin: 0; background: rgba(255, 255, 255, 0.03); border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; cursor: pointer; transition: all 0.2s ease; font-size: 0.85em;';
 
-        li.addEventListener('click', function() {
+        btn.addEventListener('click', function() {
           block.element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
-        li.addEventListener('keypress', function(e) {
+        btn.addEventListener('keypress', function(e) {
           if (e.key === 'Enter') {
             block.element.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         });
 
-        li.addEventListener('mouseenter', function() {
+        btn.addEventListener('mouseenter', function() {
+          this.style.background = 'rgba(91, 127, 199, 0.15)';
+          this.style.paddingLeft = '16px';
           this.focus();
         });
 
+        btn.addEventListener('mouseleave', function() {
+          this.style.background = 'rgba(255, 255, 255, 0.03)';
+          this.style.paddingLeft = '12px';
+        });
+
+        btn.addEventListener('focus', function() {
+          this.style.background = 'rgba(91, 127, 199, 0.25)';
+          this.style.color = '#89ddff';
+          this.style.outline = 'none';
+        });
+
+        btn.addEventListener('blur', function() {
+          this.style.background = 'rgba(255, 255, 255, 0.03)';
+          this.style.color = '#cbd5e1';
+        });
+
+        li.appendChild(btn);
         list.appendChild(li);
       });
 
@@ -138,6 +202,26 @@
         }
       });
     }
+    // 토글 버튼 (코드 목록 보기/숨기기)
+    document.querySelectorAll('.param-replacer-toggle').forEach((btn) => {
+      btn.addEventListener('click', function() {
+        const container = this.closest('.param-replacer-container');
+        if (!container) return;
+        const list = container.querySelector('.param-replacer-list');
+        if (!list) return;
+        const isShown = list.style.display === 'block';
+        list.style.display = isShown ? 'none' : 'block';
+        this.textContent = isShown ? '코드 목록 보기' : '코드 목록 숨기기';
+      });
+    });
+
+    // 초기 상태에서도 목록과 카운트 계산
+    inputs.forEach((input) => {
+      const container = input.closest('.param-replacer-container');
+      if (!container) return;
+      const targets = input.dataset.targets ? input.dataset.targets.split(',').map(s => s.trim()) : (input.dataset.default ? [input.dataset.default] : []);
+      updateAffectedList(container, input.dataset.key, targets, input.value);
+    });
   }
 
   // DOM 준비 완료 후 실행
