@@ -1,9 +1,37 @@
 <div class="sidebar-categories">
   <h4>카테고리</h4>
   <style>
+    .sidebar-categories {
+      /* 스크롤바 스타일 - 파이어폭스 */
+      scrollbar-width: thin;
+      scrollbar-color: #a0a0a0 #3c3f41;
+    }
+
     .sidebar-categories ul {
       list-style: none;
       padding-left: 0;
+      overflow-x: auto;
+    }
+
+    /* 크롬/엣지/사파리용 스크롤바 스타일 */
+    .sidebar-categories ul::-webkit-scrollbar {
+      height: 8px;
+      background: #3c3f41;
+      border-radius: 8px;
+    }
+
+    .sidebar-categories ul::-webkit-scrollbar-thumb {
+      background: #a0a0a0;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .sidebar-categories ul::-webkit-scrollbar-thumb:hover {
+      background: #bfc7d5;
+    }
+
+    .sidebar-categories li {
+      white-space: nowrap;
     }
   </style>
   <ul>
