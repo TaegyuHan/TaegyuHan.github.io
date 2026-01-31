@@ -1,0 +1,66 @@
+/* Archive Image Loading Spinner */
+
+.archive__item-teaser--loading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background-color: #2b2b2b;
+  overflow: hidden;
+}
+
+/* 로딩 중일 때만 스피너 표시 */
+.archive__item-teaser--loading .archive__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* 로딩 완료 후 스피너 숨기기 */
+.archive__item-teaser:not(.archive__item-teaser--loading) .archive__spinner {
+  display: none;
+  opacity: 0;
+}
+
+.archive__spinner-circle {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #3c3f41;
+  border-top-color: #a0a0a0;
+  border-right-color: #bfc7d5;
+  border-radius: 50%;
+  animation: archive-spinner-spin 0.8s linear infinite;
+}
+
+@keyframes archive-spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 이미지는 로딩 중에 숨김 */
+.archive__item-teaser--loading .archive__item-image {
+  display: none;
+  opacity: 0;
+}
+
+/* 로드 완료 후 이미지 표시 */
+.archive__item-image--loaded {
+  display: block !important;
+  animation: archive-fade-in 0.4s ease-in-out forwards;
+}
+
+@keyframes archive-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

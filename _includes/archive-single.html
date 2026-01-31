@@ -15,8 +15,12 @@
 <div class="{{ include.type | default: 'list' }}__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     {% if teaser %}
-      <div class="archive__item-teaser">
-        <img src="{{ teaser | relative_url }}" alt="">
+      {% capture loader_id %}archive-teaser-{{ post.url | slugify }}{% endcapture %}
+      <div class="archive__item-teaser archive__item-teaser--loading" id="{{ loader_id }}">
+        <div class="archive__spinner">
+          <div class="archive__spinner-circle"></div>
+        </div>
+        <img src="{{ teaser | relative_url }}" alt="" class="archive__item-image" onload="this.classList.add('archive__item-image--loaded'); this.parentElement.classList.remove('archive__item-teaser--loading');" onerror="this.parentElement.classList.remove('archive__item-teaser--loading');">
       </div>
     {% endif %}
     <h2 class="archive__item-title no_toc" itemprop="headline">
