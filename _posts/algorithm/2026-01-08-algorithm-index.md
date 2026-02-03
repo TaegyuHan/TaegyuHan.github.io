@@ -7,7 +7,7 @@ header:
   overlay_filter: 0.5
 
 categories:
-  - algorithm
+  - Algorithm
 
 tags:
   - 알고리즘

@@ -7,7 +7,7 @@ header:
   overlay_filter: 0.5
 
 categories:
-  - datastructure
+  - Data Structure
 
 tags:
   - 자료구조
