@@ -22,7 +22,7 @@ toc: true
 show_date: true
 mermaid: true
 
-last_modified_at: 2026-03-06T12:00:00+09:00
+last_modified_at: 2026-03-06T23:56:00+09:00
 ---
 
 AI 에이전트가 코드를 작성하는 시대가 왔다. GitHub Copilot Agent Mode, Claude Code, Cursor 등 다양한 도구가 등장하면서 "에이전트에게 맡기면 알아서 해준다"는 기대가 커지고 있다.
