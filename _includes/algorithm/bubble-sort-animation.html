@@ -1,0 +1,582 @@
+<div class="bubble-sort-animation">
+  <div class="animation-wrapper">
+    <div class="array-container" id="arrayContainer"></div>
+    
+    <div class="control-panel">
+      <div class="control-buttons">
+        <button id="startBtn" class="btn btn--primary">시작</button>
+        <button id="pauseBtn" class="btn btn--inverse" disabled>일시정지</button>
+        <button id="resetBtn" class="btn btn--inverse">리셋</button>
+      </div>
+      <div class="control-speed">
+        <span class="speed-label">속도:</span>
+        <div class="speed-options">
+          <label class="speed-radio">
+            <input type="radio" name="speed" value="2000">
+            <span>느림</span>
+          </label>
+          <label class="speed-radio">
+            <input type="radio" name="speed" value="1000" checked>
+            <span>보통</span>
+          </label>
+          <label class="speed-radio">
+            <input type="radio" name="speed" value="500">
+            <span>빠름</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-panel">
+      <div class="status-message" id="statusText">
+        배열을 정렬할 준비가 되었습니다.
+      </div>
+      <div class="status-stats">
+        <div class="stat-item">
+          <span class="stat-label">비교</span>
+          <span class="stat-value" id="compareCount">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">교환</span>
+          <span class="stat-value" id="swapCount">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">패스</span>
+          <span class="stat-value" id="passCount">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.bubble-sort-animation {
+  margin: 2em 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+}
+
+.animation-wrapper {
+  background: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 4px;
+  padding: 2em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.array-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  min-height: 100px;
+  margin-bottom: 2em;
+  padding: 1.5em 1em;
+  background: #0d0d0d;
+  border: 1px solid #2d2d2d;
+  border-radius: 4px;
+  position: relative;
+}
+
+.array-item {
+  min-width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #e0e0e0;
+  background: #404040;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.array-item.comparing {
+  background: #ff9800;
+  z-index: 10;
+  transform: translateY(-12px);
+  box-shadow: 0 4px 16px rgba(255, 152, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.array-item.swapping {
+  background: #f44336;
+  z-index: 20;
+  box-shadow: 0 6px 20px rgba(244, 67, 54, 0.7);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.array-item.sorted {
+  background: #4caf50;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.5);
+  animation: sortedAnimation 0.5s ease;
+}
+
+@keyframes sortedAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.control-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #2d2d2d;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.control-speed {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.speed-label {
+  font-size: 0.875em;
+  color: #b0b0b0;
+  font-weight: 600;
+}
+
+.speed-options {
+  display: flex;
+  gap: 0.5em;
+  background: #2d2d2d;
+  padding: 0.25em;
+  border-radius: 4px;
+  border: 1px solid #404040;
+}
+
+.speed-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.4em 0.75em;
+  font-size: 0.75em;
+  color: #b0b0b0;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.speed-radio:hover {
+  background: #353535;
+  color: #e0e0e0;
+}
+
+.speed-radio input[type="radio"] {
+  margin: 0;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  accent-color: #2196f3;
+}
+
+.speed-radio input[type="radio"]:checked + span {
+  color: #2196f3;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0.5em 1em;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-width: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.btn:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+  opacity: 0.4;
+}
+
+.btn--primary {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background-color: #1976d2;
+}
+
+.btn--inverse {
+  background-color: #404040;
+  border: 1px solid #555;
+  color: #e0e0e0;
+}
+
+.btn--inverse:hover:not(:disabled) {
+  background-color: #505050;
+  border-color: #666;
+}
+
+
+
+.status-panel {
+  background: #0d0d0d;
+  border: 1px solid #2d2d2d;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.status-message {
+  padding: 1em;
+  font-size: 0.875em;
+  color: #b0b0b0;
+  line-height: 1.5;
+  border-bottom: 1px solid #2d2d2d;
+  min-height: 3em;
+  display: flex;
+  align-items: center;
+}
+
+.status-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  background: #1a1a1a;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.stat-label {
+  font-size: 0.75em;
+  color: #808080;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 1.25em;
+  color: #64b5f6;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .animation-wrapper {
+    padding: 1em;
+  }
+
+  .array-item {
+    min-width: 40px;
+    height: 40px;
+    font-size: 16px;
+    gap: 8px;
+  }
+
+  .control-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .control-speed {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .array-container {
+    gap: 6px;
+  }
+
+  .array-item {
+    min-width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+</style>
+
+<script>
+(function() {
+  'use strict';
+
+  // 초기 설정
+  const config = {
+    initialArray: [5, 3, 8, 4, 2],
+    speeds: { slow: 2000, normal: 1000, fast: 500 }
+  };
+
+  // 상태 관리
+  const state = {
+    array: [...config.initialArray],
+    isRunning: false,
+    isPaused: false,
+    speed: config.speeds.normal,
+    stats: { compareCount: 0, swapCount: 0, passCount: 0 }
+  };
+
+  // DOM 요소
+  const elements = {
+    arrayContainer: document.getElementById('arrayContainer'),
+    startBtn: document.getElementById('startBtn'),
+    pauseBtn: document.getElementById('pauseBtn'),
+    resetBtn: document.getElementById('resetBtn'),
+    speedRadios: document.querySelectorAll('input[name="speed"]'),
+    statusText: document.getElementById('statusText'),
+    compareCount: document.getElementById('compareCount'),
+    swapCount: document.getElementById('swapCount'),
+    passCount: document.getElementById('passCount')
+  };
+
+  // 배열 렌더링
+  function renderArray() {
+    elements.arrayContainer.innerHTML = '';
+    state.array.forEach((value, index) => {
+      const item = document.createElement('div');
+      item.className = 'array-item';
+      item.textContent = value;
+      item.dataset.index = index;
+      item.dataset.value = value;
+      item.style.transform = ''; // transform 초기화
+      elements.arrayContainer.appendChild(item);
+    });
+  }
+
+  // UI 업데이트
+  function updateStatus(message) {
+    elements.statusText.textContent = message;
+  }
+
+  function updateStats() {
+    elements.compareCount.textContent = state.stats.compareCount;
+    elements.swapCount.textContent = state.stats.swapCount;
+    elements.passCount.textContent = state.stats.passCount;
+  }
+
+  function updateButtons(running, paused) {
+    elements.startBtn.disabled = running && !paused;
+    elements.pauseBtn.disabled = !running;
+    elements.startBtn.textContent = paused ? '재개' : '시작';
+    elements.pauseBtn.textContent = paused ? '재개' : '일시정지';
+    elements.speedRadios.forEach(radio => radio.disabled = running);
+  }
+
+  // 애니메이션 유틸리티
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function highlightElements(indices, className) {
+    const items = elements.arrayContainer.querySelectorAll('.array-item');
+    indices.forEach(index => items[index]?.classList.add(className));
+  }
+
+  function removeHighlight(indices, className) {
+    const items = elements.arrayContainer.querySelectorAll('.array-item');
+    indices.forEach(index => items[index]?.classList.remove(className));
+  }
+
+  // 실제 위치 교환 애니메이션
+  async function swapAnimation(index1, index2) {
+    const items = elements.arrayContainer.querySelectorAll('.array-item');
+    const item1 = items[index1];
+    const item2 = items[index2];
+
+    if (!item1 || !item2) return;
+
+    // 교환 클래스 추가
+    item1.classList.add('swapping');
+    item2.classList.add('swapping');
+
+    // 두 요소의 위치 계산
+    const item1Rect = item1.getBoundingClientRect();
+    const item2Rect = item2.getBoundingClientRect();
+    const distance = item2Rect.left - item1Rect.left;
+
+    // transition 활성화를 위한 준비
+    item1.style.transition = 'transform 0.2s ease-out';
+    item2.style.transition = 'transform 0.2s ease-out';
+
+    // 1단계: 위로 올리기
+    await sleep(50);
+    item1.style.transform = `translateY(-30px)`;
+    item2.style.transform = `translateY(-30px)`;
+    await sleep(200);
+
+    // 2단계: 좌우로 이동
+    item1.style.transition = 'transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+    item2.style.transition = 'transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+    item1.style.transform = `translate(${distance}px, -30px)`;
+    item2.style.transform = `translate(${-distance}px, -30px)`;
+    await sleep(400);
+
+    // 3단계: 아래로 내리기
+    item1.style.transition = 'transform 0.2s ease-in';
+    item2.style.transition = 'transform 0.2s ease-in';
+    item1.style.transform = `translate(${distance}px, 0)`;
+    item2.style.transform = `translate(${-distance}px, 0)`;
+    await sleep(200);
+
+    // 배열에서 실제 값 교환
+    [state.array[index1], state.array[index2]] = [state.array[index2], state.array[index1]];
+
+    // DOM 재렌더링 (transform 및 transition 초기화)
+    item1.style.transform = '';
+    item2.style.transform = '';
+    item1.style.transition = '';
+    item2.style.transition = '';
+    item1.classList.remove('swapping');
+    item2.classList.remove('swapping');
+    
+    renderArray();
+  }
+
+  // 버블 정렬 알고리즘
+  async function bubbleSort() {
+    const n = state.array.length;
+
+    for (let i = 0; i < n - 1; i++) {
+      if (!state.isRunning) return;
+
+      state.stats.passCount = i + 1;
+      updateStats();
+      updateStatus(`${state.stats.passCount}번째 패스 진행 중...`);
+
+      let swapped = false;
+
+      for (let j = 0; j < n - 1 - i; j++) {
+        if (!state.isRunning) return;
+
+        // 일시정지 처리
+        while (state.isPaused && state.isRunning) {
+          await sleep(100);
+        }
+
+        // 비교
+        state.stats.compareCount++;
+        updateStats();
+        highlightElements([j, j + 1], 'comparing');
+        updateStatus(`${state.array[j]}와 ${state.array[j + 1]} 비교 중`);
+        await sleep(state.speed);
+
+        // 교환 확인
+        if (state.array[j] > state.array[j + 1]) {
+          state.stats.swapCount++;
+          updateStats();
+          swapped = true;
+
+          removeHighlight([j, j + 1], 'comparing');
+          updateStatus(`${state.array[j]}와 ${state.array[j + 1]} 교환`);
+
+          // 실제 위치 교환 애니메이션
+          await swapAnimation(j, j + 1);
+        } else {
+          removeHighlight([j, j + 1], 'comparing');
+        }
+
+        removeHighlight([j, j + 1], 'swapping');
+      }
+
+      // 정렬 완료 표시
+      const items = elements.arrayContainer.querySelectorAll('.array-item');
+      items[n - 1 - i]?.classList.add('sorted');
+
+      // 조기 종료
+      if (!swapped) {
+        updateStatus('정렬 완료! (최적화: 조기 종료)');
+        for (let k = 0; k < n - 1 - i; k++) {
+          items[k]?.classList.add('sorted');
+        }
+        break;
+      }
+    }
+
+    // 완료
+    elements.arrayContainer.querySelectorAll('.array-item').forEach(item => item.classList.add('sorted'));
+    updateStatus(`정렬 완료 (비교: ${state.stats.compareCount}, 교환: ${state.stats.swapCount})`);
+    state.isRunning = false;
+    updateButtons(false, false);
+  }
+
+  // 이벤트 핸들러
+  elements.startBtn.addEventListener('click', async () => {
+    if (state.isPaused) {
+      state.isPaused = false;
+      updateButtons(true, false);
+      updateStatus('정렬 재개...');
+    } else {
+      state.isRunning = true;
+      updateButtons(true, false);
+      await bubbleSort();
+    }
+  });
+
+  elements.pauseBtn.addEventListener('click', () => {
+    state.isPaused = !state.isPaused;
+    updateButtons(true, state.isPaused);
+    updateStatus(state.isPaused ? '일시정지됨' : '정렬 재개...');
+  });
+
+  elements.resetBtn.addEventListener('click', () => {
+    state.isRunning = false;
+    state.isPaused = false;
+    state.array = [...config.initialArray];
+    state.stats = { compareCount: 0, swapCount: 0, passCount: 0 };
+
+    renderArray();
+    updateStats();
+    updateStatus('배열을 정렬할 준비가 되었습니다.');
+    updateButtons(false, false);
+  });
+
+  elements.speedRadios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        state.speed = parseInt(e.target.value);
+      }
+    });
+  });
+
+  // 초기화
+  renderArray();
+  updateStats();
+  updateButtons(false, false);
+})();
+</script>
