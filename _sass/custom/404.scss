@@ -1,0 +1,94 @@
+.layout--splash.not-found-page {
+  background: #111;
+
+  .page__content {
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+.not-found-shell {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 180px);
+  padding: 2rem 1.25rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)), url('/assets/images/bg/page-main-image2.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.not-found-hero {
+  position: relative;
+  max-width: 34rem;
+  padding: 2rem 1.5rem;
+  border-radius: 1.25rem;
+  background: rgba(16, 18, 20, 0.42);
+  backdrop-filter: blur(4px);
+  text-align: center;
+}
+
+.not-found-code {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(4.5rem, 16vw, 8rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.not-found-title {
+  margin: 1.25rem auto 0.9rem;
+  color: #fff;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  line-height: 1.15;
+}
+
+.not-found-copy {
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.not-found-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.not-found-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11.5rem;
+  padding: 0.95rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  &--primary {
+    background: #ffffff;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    color: #111;
+  }
+}
+
+@media (min-width: 768px) {
+  .not-found-shell {
+    padding: 3rem 1.5rem;
+  }
+
+  .not-found-hero {
+    padding: 2.75rem 2.5rem;
+  }
+}
