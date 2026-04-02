@@ -54,10 +54,16 @@ if (bg) {
     "linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.90)), url('" + selected + "') no-repeat center center / cover fixed";
 }
 
+// 논어 페이지는 즉시 배경 표시
+if (isAnalects && bg) {
+  bg.classList.add('show');
+}
+
 window.addEventListener('scroll', function() {
   var triggerHeight = 400; // 400px 이상 스크롤 시 등장
   var bg = document.getElementById('fullscreen-bg-image');
   if (!bg) return;
+  if (isAnalects) return; // 논어 페이지는 스크롤 제어 무시
   if (window.scrollY > triggerHeight) {
     bg.classList.add('show');
   } else {
