@@ -16,6 +16,8 @@
   {% endif %}
 
   <!-- 카테고리 리스트 -->
+  {% unless page.sidebar.nav %}
    {% include sidebar/sidebar-categories.html %}
+  {% endunless %}
 
   </div>

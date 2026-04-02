@@ -28,20 +28,26 @@
 </style>
 
 <script>
-// 이미지 2개 중 1개를 랜덤 선택
-var images = [
-  '/assets/images/bg/page-main-image1.jpg',
-  '/assets/images/bg/page-main-image2.jpg',
-  '/assets/images/bg/page-main-image3.png',
-  '/assets/images/bg/page-main-image4.png',
-  '/assets/images/bg/page-main-image5.png',
-  '/assets/images/bg/page-main-image6.png',
-  '/assets/images/bg/page-main-image7.png',
-  '/assets/images/bg/page-main-image8.png',
-  '/assets/images/bg/page-main-image9.png',
-  '/assets/images/bg/page-main-image10.png',
-];
-var selected = images[Math.floor(Math.random() * images.length)];
+// 논어 페이지일 때는 고정 이미지, 나머지는 랜덤 선택
+var isAnalects = window.location.pathname.indexOf('/analects/') === 0;
+var selected;
+if (isAnalects) {
+  selected = '/assets/post/analects/analects.png';
+} else {
+  var images = [
+    '/assets/images/bg/page-main-image1.jpg',
+    '/assets/images/bg/page-main-image2.jpg',
+    '/assets/images/bg/page-main-image3.png',
+    '/assets/images/bg/page-main-image4.png',
+    '/assets/images/bg/page-main-image5.png',
+    '/assets/images/bg/page-main-image6.png',
+    '/assets/images/bg/page-main-image7.png',
+    '/assets/images/bg/page-main-image8.png',
+    '/assets/images/bg/page-main-image9.png',
+    '/assets/images/bg/page-main-image10.png',
+  ];
+  selected = images[Math.floor(Math.random() * images.length)];
+}
 var bg = document.getElementById('fullscreen-bg-image');
 if (bg) {
   bg.style.background =

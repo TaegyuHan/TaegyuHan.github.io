@@ -35,7 +35,9 @@
       </footer>
     </div>
 
+    {% unless page.permalink == '/analects/' or page.url contains '/analects/' %}
     {% include post/search-shortcut-hint.html %}
+    {% endunless %}
     {% include scripts.html %}
 
   </body>

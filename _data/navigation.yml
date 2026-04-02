@@ -6,6 +6,54 @@ main:
     url: /tags/
   - title: "Category"
     url: /categories/
+  - title: "論語"
+    url: /analects/
+
+# 論語 사이드바 네비게이션
+analects-sidebar:
+  - title: "論語 二十篇"
+    url: /analects/
+    children:
+      - title: "第1篇 學而 (학이)"
+        url: /analects/01-학이/
+      - title: "第2篇 爲政 (위정)"
+        url: /analects/02-위정/
+      - title: "第3篇 八佾 (팔일)"
+        url: /analects/03-팔일/
+      - title: "第4篇 里仁 (이인)"
+        url: /analects/04-이인/
+      - title: "第5篇 公冶長 (공야장)"
+        url: /analects/05-공야장/
+      - title: "第6篇 雍也 (옹야)"
+        url: /analects/06-옹야/
+      - title: "第7篇 述而 (술이)"
+        url: /analects/07-술이/
+      - title: "第8篇 泰伯 (태백)"
+        url: /analects/08-태백/
+      - title: "第9篇 子罕 (자한)"
+        url: /analects/09-자한/
+      - title: "第10篇 鄕黨 (향당)"
+        url: /analects/10-향당/
+      - title: "第11篇 先進 (선진)"
+        url: /analects/11-선진/
+      - title: "第12篇 顏淵 (안연)"
+        url: /analects/12-안연/
+      - title: "第13篇 子路 (자로)"
+        url: /analects/13-자로/
+      - title: "第14篇 憲問 (헌문)"
+        url: /analects/14-헌문/
+      - title: "第15篇 衛靈公 (위령공)"
+        url: /analects/15-위령공/
+      - title: "第16篇 季氏 (계씨)"
+        url: /analects/16-계씨/
+      - title: "第17篇 陽貨 (양화)"
+        url: /analects/17-양화/
+      - title: "第18篇 微子 (미자)"
+        url: /analects/18-미자/
+      - title: "第19篇 子張 (자장)"
+        url: /analects/19-자장/
+      - title: "第20篇 堯曰 (요왈)"
+        url: /analects/20-요왈/
 
 # sidebar navigation list sample
 sidebar-sample:

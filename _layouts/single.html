@@ -56,7 +56,9 @@ layout: default
         {{ content }}
         
         <!-- 포스트 마무리 글 -->
+        {% unless page.url contains '/analects/' %}
         {% include post/post-ending.html %}
+        {% endunless %}
 
         <!-- 최상단으로 향하는 버튼 -->
         {% include post/scroll-to-top-button.html %}

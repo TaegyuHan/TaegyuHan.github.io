@@ -5,6 +5,11 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.png">
 
+<!-- 論語 페이지 전용 스타일 -->
+{% if page.url contains '/analects/' or page.permalink == '/analects/' %}
+<link rel="stylesheet" href="{{ '/assets/css/analects.css' | relative_url }}">
+{% endif %}
+
 <!-- end custom head snippets -->
 <script src="{{ '/assets/js/custom/mermaidPopup.js' | relative_url }}" defer></script>
 <style>
